@@ -139,7 +139,7 @@ export function procesarMensajeLocal(negocio, mensajeUsuario) {
     const detalleExtra = mejorItem.detalles ? ` · ${mejorItem.detalles}` : '';
 
     return {
-      respuesta: `📌 **${mejorItem.nombre}**: ${mejorItem.descripcion}\n💰 **Precio:** ${precioStr}${detalleExtra}.\n\n¿Te gustaría solicitar más información o coordinar la compra/visita?`,
+      respuesta: `**${mejorItem.nombre}**: ${mejorItem.descripcion}\n**Precio:** ${precioStr}${detalleExtra}.\n\n¿Te gustaría solicitar más información o coordinar la compra/visita?`,
       intencion: 'catalogo',
       item: mejorItem,
       esLeadPotencial: true,

@@ -10,26 +10,26 @@ Plataforma full-stack de **asistentes virtuales de atención al cliente multi-ne
 
 ---
 
-## ⚡ Características Principales
+## Características Principales
 
-### 🧠 1. Motor Híbrido de Inteligencia Artificial & NLP
+### 1. Motor Híbrido de Inteligencia Artificial & NLP
 * **Modo Autónomo Local (Zero-Cost / Offline):** Búsqueda semántica, similitud Jaccard/TF-IDF y coincidencia de intención por N-gramas que opera **100% gratis**, sin depender de saldo en APIs externas y con respuesta instantánea (< 5ms).
 * **Modo LLM Generativo (OpenAI / Gemini):** Si se configura una API Key (`OPENAI_API_KEY` o `GEMINI_API_KEY`), el motor genera respuestas empáticas, humanas y conversacionales mediante *Prompt Grounding* estricto para evitar alucinaciones.
 * **Fallback Automático Resiliente:** Si el servicio de IA externa se queda sin saldo o pierde conexión, el sistema conmuta de forma transparente al motor semántico local sin interrumpir el servicio al cliente.
 
-### 🏢 2. Arquitectura Multi-Tenant (Multi-Negocio)
+### 2. Arquitectura Multi-Tenant (Multi-Negocio)
 Un solo servidor puede gestionar la atención de cientos de negocios independientes. Incluye 4 perfiles preconfigurados listos para producción:
 1. **`premium-home`:** Inmobiliaria residencial de lujo (casas, villas, mansiones, agendamiento de visitas guiadas).
 2. **`la-esquina`:** Restaurante y pollo crujiente (combos, precios, delivery express, medios de pago contraentrega).
 3. **`sonrisa-dental`:** Clínica odontológica (diseño de sonrisa, ortodoncia, citas de diagnóstico gratuito).
 4. **`nexus-tech`:** Tienda de computación y gaming (laptops gamer, periféricos, garantías y envíos a provincia).
 
-### 🎯 3. Captura Inteligente de Prospectos (Lead Generation)
+### 3. Captura Inteligente de Prospectos (Lead Generation)
 * Detección automática de intenciones comerciales (solicitud de visitas, cotizaciones, llamadas de asesor o compra).
 * Despliegue de banner para captura de **Nombre**, **WhatsApp/Teléfono** y **Correo**.
 * Almacenamiento seguro en base de datos (`data/leads.json`) y consulta protegida vía API REST.
 
-### 🔌 4. Widget Web Embebible (`widget.js`)
+### 4. Widget Web Embebible (`widget.js`)
 * Script vanilla JS ultra liviano (< 6KB, zero dependencies).
 * Se integra en cualquier web moderna (WordPress, Shopify, Webflow o HTML puro) con solo agregar:
   ```html
@@ -37,7 +37,7 @@ Un solo servidor puede gestionar la atención de cientos de negocios independien
   ```
 * Incluye botón flotante con animaciones, ventana de chat estilizada, chips de preguntas frecuentes sugeridas y formulario de contacto integrado.
 
-### 📊 5. Dashboard & Playground Interactivo (`/`)
+### 5. Dashboard & Playground Interactivo (`/`)
 * Panel web visual para probar las respuestas de cada negocio en tiempo real.
 * Selector instantáneo de negocio para verificar catálogos y bases de conocimiento.
 * Inspección técnica de la carga útil JSON devuelta por la API (`intencion`, `esLeadPotencial`, `tiempoMs`, `motor`).
@@ -45,7 +45,7 @@ Un solo servidor puede gestionar la atención de cientos de negocios independien
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 chatbot-clientes-api/
@@ -73,12 +73,12 @@ chatbot-clientes-api/
 
 ---
 
-## 🚀 Inicio Rápido (Local)
+## Inicio Rápido (Local)
 
 ### 1. Clonar el proyecto
 ```bash
-git clone https://github.com/TU_USUARIO/chatbot-clientes-api.git
-cd chatbot-clientes-api
+git clone https://github.com/Jp3528/Chatbot-CLiente-.git
+cd Chatbot-CLiente-
 ```
 
 ### 2. Instalar dependencias
@@ -106,7 +106,7 @@ npm test
 
 ---
 
-## 📡 Especificación de la API REST
+## Especificación de la API REST
 
 | Método | Endpoint | Descripción | Acceso |
 | :--- | :--- | :--- | :--- |
@@ -149,7 +149,7 @@ curl -X POST http://localhost:3000/api/chat \
 
 ---
 
-## 🔌 Cómo Embeber el Widget en Cualquier Sitio Web
+## Cómo Embeber el Widget en Cualquier Sitio Web
 
 Para integrar el chatbot en cualquier página web (WordPress, Shopify, Landing Page HTML, etc.), añade el siguiente fragmento antes de la etiqueta de cierre `</body>`:
 
@@ -169,17 +169,17 @@ Para integrar el chatbot en cualquier página web (WordPress, Shopify, Landing P
 
 ---
 
-## ☁️ Despliegue en la Nube (Vercel)
+## Despliegue en la Nube (Vercel)
 
 El proyecto incluye `vercel.json` y la función serverless `api/index.mjs` preconfigurada:
 
-1. Sube tu código a un repositorio en tu cuenta de GitHub (ej. `chatbot-clientes-api`).
+1. Sube tu código a un repositorio en tu cuenta de GitHub (`Jp3528/Chatbot-CLiente-`).
 2. Entra a [vercel.com](https://vercel.com/) y pulsa **Add New... > Project**.
 3. Selecciona tu repositorio y pulsa **Deploy**.
 4. (Opcional) En *Settings > Environment Variables*, añade `OPENAI_API_KEY` o `GEMINI_API_KEY` si deseas utilizar modelos de lenguaje generativos en la nube.
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está liberado bajo la Licencia **MIT**. Puedes utilizarlo y modificarlo libremente para proyectos comerciales o personales.

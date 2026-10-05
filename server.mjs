@@ -211,8 +211,8 @@ export default app;
 
 if (!process.env.VERCEL) {
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🤖 Chatbot Clientes API ejecutándose en http://localhost:${PORT}`);
-    console.log(`📊 Playground interactivo disponible en http://localhost:${PORT}`);
-    console.log(`🔌 Script widget embebible: http://localhost:${PORT}/widget.js`);
+    console.log(`[INFO] Chatbot Clientes API ejecutándose en http://localhost:${PORT}`);
+    console.log(`[INFO] Playground interactivo disponible en http://localhost:${PORT}`);
+    console.log(`[INFO] Script widget embebible: http://localhost:${PORT}/widget.js`);
   });
 }

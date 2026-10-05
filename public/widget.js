@@ -330,7 +330,7 @@
       leadBanner.innerHTML = `
         <strong>¿Deseas que un asesor se comunique contigo?</strong>
         <span>Deja tu nombre y teléfono para contactarte de inmediato.</span>
-        <button type="button" class="cb-lead-open">Dejar mis datos 📲</button>
+        <button type="button" class="cb-lead-open">Dejar mis datos</button>
       `;
       leadBanner.querySelector('.cb-lead-open').addEventListener('click', promptLeadForm);
       bubble.appendChild(leadBanner);
@@ -398,10 +398,10 @@
     })
       .then(res => res.json())
       .then(data => {
-        addBotMessage(`✓ ¡Muchas gracias ${nombre}! Hemos registrado tus datos con el código **${data.lead?.id || 'LEAD'}**. Un asesor te escribirá en breve.`);
+        addBotMessage(`¡Muchas gracias ${nombre}! Hemos registrado tus datos con el código **${data.lead?.id || 'LEAD'}**. Un asesor te escribirá en breve.`);
       })
       .catch(() => {
-        addBotMessage(`✓ Datos recibidos. Nos pondremos en contacto al ${contacto}.`);
+        addBotMessage(`Datos recibidos. Nos pondremos en contacto al ${contacto}.`);
       });
   }
 
