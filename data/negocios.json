@@ -1,0 +1,251 @@
+{
+  "premium-home": {
+    "id": "premium-home",
+    "nombre": "Premium Home Inmobiliaria",
+    "categoria": "Inmobiliaria & Bienes Raíces",
+    "color": "#0f766e",
+    "descripcion": "Inmobiliaria boutique especializada en propiedades residenciales, villas exclusivas y mansiones privadas.",
+    "telefono": "+51 987 654 321",
+    "email": "ventas@premiumhome.com",
+    "horario": "Lunes a Sábado de 9:00 AM a 7:00 PM",
+    "ubicacion": "San Isidro / Miraflores, Lima - Perú",
+    "saludo": "¡Hola! Bienvenido a Premium Home Inmobiliaria. ¿Te gustaría conocer nuestras propiedades destacadas o agendar una visita guiada?",
+    "despedida": "Ha sido un placer ayudarte. Si deseas agendar una visita o recibir el brochure completo, deja tus datos o contáctanos por WhatsApp.",
+    "preguntasSugeridas": [
+      "¿Qué propiedades tienen disponibles?",
+      "¿Tienen casas con piscina y jardín?",
+      "¿Cuál es la propiedad más económica?",
+      "¿Cómo puedo agendar una visita guiada?",
+      "¿Ofrecen financiamiento o cuotas?"
+    ],
+    "informacion": [
+      "Villa Moderna: Precio US$ 50,000. Cuenta con 3 dormitorios, piscina privada y jardín paisajista.",
+      "Residencial Lujoso: Precio US$ 20,000. Propiedad privada en condominio cerrado con seguridad 24/7 y 2 dormitorios.",
+      "Mansión Lujosa: Precio US$ 700,000. Propiedad de alta gama con piscina temperada, jardín de 500m2, 5 suites y cochera cuádruple.",
+      "Penthouse Panorámico: Precio US$ 320,000. Departamento dúplex con terraza, vista al mar y acabados de mármol.",
+      "Todas las visitas se coordinan con un asesor inmobiliario certificado previo registro de datos de contacto.",
+      "Aceptamos pagos al contado y cartas de crédito bancario aprobadas.",
+      "No existe información confirmada sobre financiamiento directo del propietario, descuentos no pactados ni disponibilidad inmediata sin visita."
+    ],
+    "faqs": [
+      {
+        "pregunta": "¿Cuál es la propiedad más económica?",
+        "respuesta": "Nuestra propiedad más accesible es 'Residencial Lujoso', con un valor de US$ 20,000, ubicada en un condominio privado con alta seguridad.",
+        "tags": ["economica", "barata", "menor precio", "mas barata", "precio bajo"]
+      },
+      {
+        "pregunta": "¿Tienen propiedades con piscina?",
+        "respuesta": "Sí, disponemos de 'Villa Moderna' (US$ 50,000) y 'Mansión Lujosa' (US$ 700,000), ambas con amplias piscinas y jardines privados.",
+        "tags": ["piscina", "piscinas", "alberca"]
+      },
+      {
+        "pregunta": "¿Cómo agendo una visita?",
+        "respuesta": "Puedes dejar tu nombre, teléfono y correo aquí en el chat para que uno de nuestros asesores coordine tu visita guiada privada en el horario que más te acomode.",
+        "tags": ["visita", "visitar", "cita", "conocer", "agendar", "asesor", "contacto"]
+      },
+      {
+        "pregunta": "¿Qué requisitos piden para comprar?",
+        "respuesta": "Para reservar una propiedad se requiere DNI o Pasaporte vigente y comprobante de fondos o carta de precalificación bancaria hipotecaria.",
+        "tags": ["requisitos", "documentos", "papeles", "comprar"]
+      }
+    ],
+    "catalogo": [
+      {
+        "id": "PH-01",
+        "nombre": "Residencial Lujoso",
+        "precio": 20000,
+        "moneda": "USD",
+        "descripcion": "Acogedora residencia privada en condominio cerrado.",
+        "detalles": "2 hab, 2 baños, 95m2, seguridad 24/7"
+      },
+      {
+        "id": "PH-02",
+        "nombre": "Villa Moderna",
+        "precio": 50000,
+        "moneda": "USD",
+        "descripcion": "Hermosa villa con arquitectura contemporánea y acabados de lujo.",
+        "detalles": "3 hab, piscina, jardín, cochera doble, 240m2"
+      },
+      {
+        "id": "PH-03",
+        "nombre": "Penthouse Panorámico",
+        "precio": 320000,
+        "moneda": "USD",
+        "descripcion": "Dúplex de lujo en piso superior con vista frontal al mar.",
+        "detalles": "4 hab, terraza privada, parrilla, 310m2"
+      },
+      {
+        "id": "PH-04",
+        "nombre": "Mansión Lujosa",
+        "precio": 700000,
+        "moneda": "USD",
+        "descripcion": "Exclusiva residencia de ensueño con parque interno.",
+        "detalles": "5 suites, piscina temperada, jardín 500m2, gimnasio, 650m2"
+      }
+    ]
+  },
+  "la-esquina": {
+    "id": "la-esquina",
+    "nombre": "La Esquina Pollo Crujiente",
+    "categoria": "Restaurante & Comida Rápida",
+    "color": "#ea580c",
+    "descripcion": "El mejor pollo frito crocante de barrio, papas rústicas calientes y salsas artesanales hechas al día.",
+    "telefono": "+51 987 654 321",
+    "email": "pedidos@laesquina.pe",
+    "horario": "Lunes a Domingo de 12:00 PM a 11:00 PM",
+    "ubicacion": "Av. Miraflores 450, Lima - Perú",
+    "saludo": "¡Hola! Bienvenido a La Esquina. ¿Qué antojo crujiente tienes hoy? Puedo mostrarte nuestros combos, precios y costos de delivery.",
+    "despedida": "¡Muchas gracias por contactarnos! Haz tu pedido online o por WhatsApp y te lo preparamos al instante bien caliente.",
+    "preguntasSugeridas": [
+      "¿Cuáles son los combos más pedidos?",
+      "¿Cuánto cuesta el delivery?",
+      "¿Qué medios de pago aceptan?",
+      "¿Tienen opciones para compartir?",
+      "¿Cuál es el horario de atención?"
+    ],
+    "informacion": [
+      "El Clásico: 2 piezas de pollo crujiente, papas fritas rústicas y gaseosa personal por S/ 15.",
+      "Crunch para Dos: 4 piezas de pollo, papas grandes y 2 salsas por S/ 28.",
+      "La Cubeta Barrio: 6 piezas de pollo, porción doble de papas y 3 salsas por S/ 39.",
+      "Cubetón Familiar: 8 piezas de pollo, 2 papas grandes, ensalada coleslaw y gaseosa 1.5L por S/ 49.",
+      "Sánguche Crispy Deluxe: Pechuga crocante en pan brioche, cheddar, pepinillos y salsa por S/ 18.",
+      "Alitas BBQ Ahumadas (6 unid) con papas por S/ 20.",
+      "Tenders Extra Crunch (5 unid) con panko y honey mustard por S/ 19.",
+      "Papas rústicas individuales: S/ 8 | Ensalada Coleslaw fresca: S/ 7 | Chicha morada casera 500ml: S/ 6.",
+      "Modalidades: Recojo en local (S/ 0 costo) y Delivery express en la zona por solo S/ 3.00.",
+      "Medios de pago: Efectivo contraentrega, Yape y Plin mediante código QR al motorizado."
+    ],
+    "faqs": [
+      {
+        "pregunta": "¿Cuánto cuesta el delivery y cuál es la cobertura?",
+        "respuesta": "La tarifa plana de delivery express es de solo S/ 3.00 en nuestra zona de reparto habitual. También puedes recoger gratis en tienda.",
+        "tags": ["delivery", "envio", "costo envio", "cuanto cobran", "cobertura"]
+      },
+      {
+        "pregunta": "¿Qué medios de pago reciben?",
+        "respuesta": "Aceptamos pago contraentrega en Efectivo exacto y billeteras digitales (Yape o Plin al momento de recibir tu orden).",
+        "tags": ["pagos", "metodos de pago", "efectivo", "yape", "plin", "tarjeta"]
+      },
+      {
+        "pregunta": "¿Cuál es el combo más vendido?",
+        "respuesta": "El más solicitado individualmente es 'El Clásico' (2 piezas + papas + bebida) por S/ 15, y para grupos 'La Cubeta Barrio' (6 piezas + papas dobles + 3 salsas) por S/ 39.",
+        "tags": ["mas vendido", "popular", "recomendado", "combo estrella"]
+      }
+    ],
+    "catalogo": [
+      { "id": "ESQ-01", "nombre": "El Clásico", "precio": 15, "moneda": "PEN", "descripcion": "2 piezas de pollo crujiente, papas rústicas y gaseosa." },
+      { "id": "ESQ-02", "nombre": "Crunch para Dos", "precio": 28, "moneda": "PEN", "descripcion": "4 piezas de pollo, papas grandes y dos salsas artesanales." },
+      { "id": "ESQ-03", "nombre": "La Cubeta Barrio", "precio": 39, "moneda": "PEN", "descripcion": "6 piezas de pollo crujiente, porción doble de papas y tres salsas." },
+      { "id": "ESQ-04", "nombre": "Cubetón Familiar", "precio": 49, "moneda": "PEN", "descripcion": "8 piezas de pollo, dos papas grandes, coleslaw y gaseosa 1.5L." },
+      { "id": "ESQ-05", "nombre": "Sánguche Crispy Deluxe", "precio": 18, "moneda": "PEN", "descripcion": "Pechuga crocante en pan brioche, cheddar y pepinillos." },
+      { "id": "ESQ-06", "nombre": "Alitas BBQ Ahumadas (6u)", "precio": 20, "moneda": "PEN", "descripcion": "Alitas con salsa barbacoa y papas fritas." }
+    ]
+  },
+  "sonrisa-dental": {
+    "id": "sonrisa-dental",
+    "nombre": "Clínica Dental Sonrisa Plena",
+    "categoria": "Salud & Odontología",
+    "color": "#0284c7",
+    "descripcion": "Centro odontológico integral especializado en ortodoncia estética, diseño de sonrisa, implantes y emergencias dentales.",
+    "telefono": "+51 912 345 678",
+    "email": "citas@sonrisaplena.com",
+    "horario": "Lunes a Sábado de 8:30 AM a 8:00 PM",
+    "ubicacion": "Av. Benavides 1850, Miraflores, Lima",
+    "saludo": "¡Hola! Bienvenido a Clínica Sonrisa Plena. ¿En qué tratamiento dental te gustaría recibir asesoría o agendar una evaluación gratuita?",
+    "despedida": "Tu salud bucal es lo más importante. Escríbenos o déjanos tu número para reservar tu cita médica sin costo de evaluación.",
+    "preguntasSugeridas": [
+      "¿La primera consulta es gratuita?",
+      "¿Cuánto cuesta el blanqueamiento dental?",
+      "¿Qué tipos de ortodoncia tienen?",
+      "¿Atienden emergencias por dolor dental?",
+      "¿Cómo reservo una cita?"
+    ],
+    "informacion": [
+      "Primera consulta y evaluación diagnóstica con cámara intraoral y radiografía digital 100% gratuita.",
+      "Profilaxis y limpieza dental con ultrasonido: S/ 80.",
+      "Blanqueamiento dental LED láser en 1 sola sesión: S/ 250 (incluye fluorización).",
+      "Ortodoncia tradicional (brackets metálicos): Inicial de S/ 300 y mensualidades de S/ 120.",
+      "Ortodoncia estética (brackets de zafiro transparentes): Inicial S/ 500 y cuotas de S/ 160.",
+      "Alineadores invisibles (sin brackets): Cotización personalizada previa toma de escaneo 3D.",
+      "Curaciones estéticas con resina fotocurable: Desde S/ 60 por pieza.",
+      "Implantes dentales de titanio con corona de porcelana: Desde S/ 1,200.",
+      "Atendemos urgencias odontológicas y dolores agudos en el mismo día."
+    ],
+    "faqs": [
+      {
+        "pregunta": "¿La primera cita tiene costo?",
+        "respuesta": "¡No! La primera consulta de diagnóstico integral con radiografía y plan de tratamiento personalizado es completamente gratuita.",
+        "tags": ["gratis", "primera cita", "costo consulta", "evaluacion", "diagnostico"]
+      },
+      {
+        "pregunta": "¿Cuánto dura y qué precio tiene el blanqueamiento?",
+        "respuesta": "El blanqueamiento dental LED dura aproximadamente 45 a 60 minutos en una sola sesión clínica por un costo promocional de S/ 250.",
+        "tags": ["blanqueamiento", "dientes blancos", "laser", "estetica"]
+      },
+      {
+        "pregunta": "¿Cómo agendo una cita?",
+        "respuesta": "Solo indícanos tu nombre completo, teléfono y el día de tu preferencia para que nuestra recepcionista te agende de inmediato.",
+        "tags": ["cita", "agendar", "horarios", "reservar", "turno"]
+      }
+    ],
+    "catalogo": [
+      { "id": "DEN-01", "nombre": "Evaluación Integral + Radiografía", "precio": 0, "moneda": "PEN", "descripcion": "Diagnóstico odontológico completo sin costo." },
+      { "id": "DEN-02", "nombre": "Limpieza Dental Ultrasonido", "precio": 80, "moneda": "PEN", "descripcion": "Eliminación de sarro, manchas y pulido coronario." },
+      { "id": "DEN-03", "nombre": "Blanqueamiento Láser LED", "precio": 250, "moneda": "PEN", "descripcion": "Aclaramiento de hasta 4 tonos en una sesión clínica." },
+      { "id": "DEN-04", "nombre": "Ortodoncia Metálica", "precio": 300, "moneda": "PEN", "descripcion": "Cuota inicial que incluye colocación de brackets superior e inferior." }
+    ]
+  },
+  "nexus-tech": {
+    "id": "nexus-tech",
+    "nombre": "NexusTech Store",
+    "categoria": "Tecnología, Laptops & Gaming",
+    "color": "#7c3aed",
+    "descripcion": "Tienda especializada en laptops gamer, componentes para PC, periféricos profesionales y soporte técnico certificado.",
+    "telefono": "+51 945 678 123",
+    "email": "soporte@nexustech.pe",
+    "horario": "Lunes a Sábado de 10:00 AM a 8:00 PM",
+    "ubicacion": "Av. Arenales 1420 / Envíos a todo el Perú",
+    "saludo": "¡Qué tal! Bienvenido a NexusTech. ¿Buscas alguna laptop para trabajo, estudio o gaming? Puedo asesorarte con precios y especificaciones.",
+    "despedida": "Cualquier duda adicional, estamos listos para asesorarte con la mejor configuración de hardware. ¡Que tengas un excelente día!",
+    "preguntasSugeridas": [
+      "¿Qué laptops gamer tienen disponibles?",
+      "¿Tienen envíos a provincia?",
+      "¿Ofrecen garantía oficial?",
+      "¿Aceptan tarjetas de crédito?",
+      "¿Hacen servicio técnico de armado de PC?"
+    ],
+    "informacion": [
+      "Laptop ASUS TUF Gaming F15 (Intel Core i7 13va gen, 16GB RAM, RTX 4060 8GB, SSD 512GB): S/ 4,299.",
+      "Laptop Lenovo LOQ 15 (AMD Ryzen 7, 16GB RAM, RTX 4050 6GB, SSD 1TB): S/ 3,799.",
+      "Laptop Dell Inspiron para Oficina/Estudio (Intel Core i5, 16GB RAM, SSD 512GB, pantalla FHD): S/ 2,499.",
+      "Monitor Gamer 27 pulgadas IPS 165Hz 1ms FreeSync: S/ 799.",
+      "Teclado mecánico RGB switches Red/Blue antighosting: S/ 189.",
+      "Todos los productos cuentan con 12 a 24 meses de garantía de fábrica oficial de la marca.",
+      "Envíos express en Lima en menos de 24 horas y despachos diarios a provincias con Olva Courier y Shalom.",
+      "Medios de pago: Transferencias BCP/BBVA, Yape, Plin y tarjetas de crédito/débito hasta en 12 cuotas."
+    ],
+    "faqs": [
+      {
+        "pregunta": "¿Cómo funcionan los envíos a provincia?",
+        "respuesta": "Despachamos de lunes a sábado por Olva Courier o Shalom con número de seguimiento y seguro de envío. Llega entre 24 a 48 horas.",
+        "tags": ["envios", "provincia", "shalom", "olva", "despacho"]
+      },
+      {
+        "pregunta": "¿Tienen garantía los equipos?",
+        "respuesta": "Sí, todos nuestros equipos y componentes son 100% nuevos, sellados de fábrica con garantía oficial de 12 a 24 meses y boleta/factura electrónica.",
+        "tags": ["garantia", "original", "fallas", "servicio tecnico", "seguridad"]
+      },
+      {
+        "pregunta": "¿Aceptan pagos con tarjeta en cuotas?",
+        "respuesta": "Aceptamos todas las tarjetas Visa, Mastercard, Diners y Amex con opción de cuotas sin intereses según promociones bancarias vigentes.",
+        "tags": ["tarjetas", "credito", "cuotas", "visa", "mastercard"]
+      }
+    ],
+    "catalogo": [
+      { "id": "NT-01", "nombre": "ASUS TUF Gaming F15 RTX 4060", "precio": 4299, "moneda": "PEN", "descripcion": "i7-13620H, 16GB RAM, 512GB NVMe, RTX 4060 8GB, 144Hz" },
+      { "id": "NT-02", "nombre": "Lenovo LOQ 15 RTX 4050", "precio": 3799, "moneda": "PEN", "descripcion": "Ryzen 7 7840HS, 16GB RAM, 1TB NVMe, RTX 4050 6GB" },
+      { "id": "NT-03", "nombre": "Dell Inspiron 15 Pro", "precio": 2499, "moneda": "PEN", "descripcion": "Core i5 12va gen, 16GB RAM, 512GB SSD, pantalla 15.6 FHD" },
+      { "id": "NT-04", "nombre": "Monitor Gamer 27' 165Hz IPS", "precio": 799, "moneda": "PEN", "descripcion": "Resolución FHD 1ms, HDR Ready, FreeSync Premium" }
+    ]
+  }
+}

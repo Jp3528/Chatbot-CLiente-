@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatbot Clientes API — Plataforma de Asistentes Virtuales Multi-Negocio</title>
+  <meta name="description" content="Motor de chatbot inteligente con búsqueda semántica local y LLMs para atención al cliente, consultas de catálogo y captura de leads.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Cpath d='M8 12 Q16 4 24 12 Q24 24 8 20 Z' fill='%232dd4bf'/%3E%3Ccircle cx='12' cy='14' r='2' fill='%23ffffff'/%3E%3Ccircle cx='20' cy='14' r='2' fill='%23ffffff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --card-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #0d9488;
+      --primary-light: #14b8a6;
+      --accent: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --success: #10b981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0d9488, #06b6d4);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: rgba(20, 184, 166, 0.15);
+      color: var(--primary-light);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13.5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-light);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--card-border);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: #64748b;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1400px;
+      width: 100%;
+      margin: auto;
+      padding: 28px 24px;
+      display: grid;
+      grid-template-columns: 340px 1fr 380px;
+      gap: 24px;
+    }
+
+    @media (max-width: 1200px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Column Cards */
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .panel-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .panel-head h2 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Selector de Negocios */
+    .business-card {
+      padding: 14px 16px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      width: 100%;
+      color: inherit;
+    }
+
+    .business-card:hover {
+      border-color: #64748b;
+      transform: translateY(-2px);
+    }
+
+    .business-card.active {
+      border-color: var(--primary-light);
+      background: rgba(13, 148, 136, 0.12);
+      box-shadow: 0 0 16px rgba(13, 148, 136, 0.2);
+    }
+
+    .business-icon {
+      font-size: 22px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .business-meta h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .business-meta small {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      display: block;
+      line-height: 1.3;
+    }
+
+    /* Chat Interactive Area */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 650px;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: #090d16;
+    }
+
+    .bubble {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .bubble.bot {
+      background: var(--card);
+      color: var(--text);
+      align-self: flex-start;
+      border: 1px solid var(--card-border);
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble.user {
+      background: var(--primary);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble p { margin-bottom: 6px; }
+    .bubble p:last-child { margin-bottom: 0; }
+    .bubble strong { color: var(--primary-light); }
+    .bubble.user strong { color: #fff; }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: #cbd5e1;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+
+    .chip:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .chat-input-bar {
+      padding: 16px;
+      background: var(--card);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .chat-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.25);
+    }
+
+    /* Leads & Inspector Panel */
+    .snippet-box {
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: #38bdf8;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .lead-item {
+      padding: 12px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lead-item strong {
+      color: var(--primary-light);
+      font-size: 13.5px;
+    }
+
+    .lead-item span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10.5px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+    .badge-success { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .badge-amber { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a class="brand" href="/">
+      <div class="brand-icon">🤖</div>
+      <div>
+        <div class="brand-title">Chatbot Clientes API</div>
+        <div style="font-size: 11px; color: var(--text-muted);">Multi-Tenant AI Customer Support Engine</div>
+      </div>
+    </a>
+
+    <div class="header-links">
+      <span class="brand-tag">v2.0.0 · Local NLP + LLM</span>
+      <a href="/api/negocios" target="_blank" class="btn btn-outline">📡 Ver JSON Negocios</a>
+      <a href="/api/leads" target="_blank" class="btn btn-outline">📋 Ver Leads</a>
+      <button class="btn btn-primary" onclick="testEmbedModal()">⚡ Obtener Script Embed</button>
+    </div>
+  </header>
+
+  <!-- Main View -->
+  <main>
+    <!-- Left Column: Business Selection & Knowledge Base -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>🏢 Negocios Configurados</h2>
+        <span class="badge badge-success" id="businessCount">4 activos</span>
+      </div>
+      <div class="panel-body">
+        <p style="font-size: 12.5px; color: var(--text-muted);">
+          Selecciona un negocio para simular la atención con su base de conocimiento y catálogo exclusivo:
+        </p>
+
+        <div id="businessList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+
+        <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 6px 0;">
+
+        <div id="businessDetails">
+          <h4 style="font-size: 13px; color: var(--text); margin-bottom: 6px;">📖 Base de Conocimiento</h4>
+          <ul id="knowledgeList" style="font-size: 12px; color: var(--text-muted); padding-left: 18px; display: flex; flex-direction: column; gap: 6px;"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Center Column: Chat Interactive Simulator -->
+    <section class="panel chat-container">
+      <div class="panel-head">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #4ade80;"></span>
+          <h2 id="chatActiveTitle" style="color: #fff;">Simulador de Chat en Vivo</h2>
+        </div>
+        <span class="badge badge-amber" id="engineBadge">Motor Local NLP</span>
+      </div>
+
+      <div class="chat-messages" id="chatMessages"></div>
+
+      <form class="chat-input-bar" id="chatForm" onsubmit="event.preventDefault(); handleSend();">
+        <input class="chat-input" id="chatInput" placeholder="Haz una pregunta (ej. ¿cuánto cuesta?, ¿tienen piscina?, ¿horarios?)..." autocomplete="off">
+        <button type="submit" class="btn btn-primary">Enviar ↵</button>
+      </form>
+    </section>
+
+    <!-- Right Column: Lead Capture & Live Code Generator -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>🎯 Leads & Script Embebible</h2>
+        <span class="badge badge-success">Live Ready</span>
+      </div>
+      <div class="panel-body">
+        <div>
+          <h4 style="font-size: 13px; margin-bottom: 6px;">🔌 Código para tu Web</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+            Copia esta línea en cualquier HTML para incrustar el chatbot flotante del negocio seleccionado:
+          </p>
+          <div class="snippet-box" id="embedSnippet"></div>
+          <button class="btn btn-outline" style="width: 100%; margin-top: 8px; justify-content: center;" onclick="copyEmbed()">
+            📋 Copiar Etiqueta &lt;script&gt;
+          </button>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 8px 0;">
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h4 style="font-size: 13px;">📥 Últimos Prospectos (Leads)</h4>
+            <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="loadLeads()">↻ Refrescar</button>
+          </div>
+          <div id="leadsList" style="display: flex; flex-direction: column; gap: 10px; max-height: 240px; overflow-y: auto;"></div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 8px 0;">
+
+        <div>
+          <h4 style="font-size: 13px; margin-bottom: 6px;">⚡ Inspección API (Última Respuesta)</h4>
+          <div class="snippet-box" id="jsonInspector" style="color: #a7f3d0; max-height: 160px; overflow-y: auto;">
+            // Esperando primer mensaje...
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>Chatbot Clientes API © 2026 · Arquitectura Node.js + Express + Semantic NLP & LLM</div>
+    <div>Listo para producción en Vercel, Railway o VPS</div>
+  </footer>
+
+  <script>
+    let activeProjectId = 'premium-home';
+    let allBusinesses = {};
+    let conversationHistory = [];
+
+    const BUSINESS_ICONS = {
+      'premium-home': '🏡',
+      'la-esquina': '🍗',
+      'sonrisa-dental': '🦷',
+      'nexus-tech': '💻'
+    };
+
+    async function init() {
+      await loadBusinesses();
+      await selectBusiness(activeProjectId);
+      await loadLeads();
+    }
+
+    async function loadBusinesses() {
+      try {
+        const res = await fetch('/api/negocios');
+        const data = await res.json();
+        const container = document.getElementById('businessList');
+        
+        container.innerHTML = data.negocios.map(b => `
+          <button class="business-card ${b.id === activeProjectId ? 'active' : ''}" onclick="selectBusiness('${b.id}')">
+            <span class="business-icon">${BUSINESS_ICONS[b.id] || '🏢'}</span>
+            <div class="business-meta">
+              <h3>${b.nombre}</h3>
+              <small>${b.categoria}</small>
+            </div>
+          </button>
+        `).join('');
+      } catch (err) {
+        console.error('Error cargando negocios:', err);
+      }
+    }
+
+    async function selectBusiness(id) {
+      activeProjectId = id;
+      conversationHistory = [];
+      document.querySelectorAll('.business-card').forEach(c => c.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.business-card')).find(b => b.innerHTML.includes(id));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      try {
+        const res = await fetch('/api/negocios/' + id);
+        const data = await res.json();
+        const negocio = data.negocio;
+        allBusinesses[id] = negocio;
+
+        document.getElementById('chatActiveTitle').textContent = negocio.nombre;
+        document.getElementById('chatMessages').innerHTML = '';
+
+        // Render Knowledge List
+        document.getElementById('knowledgeList').innerHTML = (negocio.informacion || []).map(info => `
+          <li>${info}</li>
+        `).join('');
+
+        // Update Embed Snippet
+        const host = window.location.origin;
+        document.getElementById('embedSnippet').textContent = `<script src="${host}/widget.js" data-project="${negocio.id}" data-color="${negocio.color || '#0f766e'}"><\/script>`;
+
+        // Render Welcome Message
+        addBotMessage(negocio.saludo || '¡Hola! ¿En qué podemos ayudarte?', negocio.preguntasSugeridas);
+
+      } catch (err) {
+        console.error('Error cargando detalle de negocio:', err);
+      }
+    }
+
+    function addBotMessage(text, chips = []) {
+      const messagesEl = document.getElementById('chatMessages');
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble bot';
+      bubble.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+
+      if (chips && chips.length > 0) {
+        const chipContainer = document.createElement('div');
+        chipContainer.className = 'chip-list';
+        chips.forEach(chipText => {
+          const btn = document.createElement('button');
+          btn.className = 'chip';
+          btn.textContent = chipText;
+          btn.onclick = () => sendQuery(chipText);
+          chipContainer.appendChild(btn);
+        });
+        bubble.appendChild(chipContainer);
+      }
+
+      messagesEl.appendChild(bubble);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      conversationHistory.push({ role: 'assistant', content: text });
+    }
+
+    function addUserMessage(text) {
+      const messagesEl = document.getElementById('chatMessages');
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble user';
+      bubble.textContent = text;
+      messagesEl.appendChild(bubble);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      conversationHistory.push({ role: 'user', content: text });
+    }
+
+    async function handleSend() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      await sendQuery(text);
+    }
+
+    async function sendQuery(text) {
+      addUserMessage(text);
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            projectId: activeProjectId,
+            mensaje: text,
+            historial: conversationHistory.slice(-6)
+          })
+        });
+
+        const data = await res.json();
+
+        // Update JSON Inspector
+        document.getElementById('jsonInspector').textContent = JSON.stringify(data, null, 2);
+        document.getElementById('engineBadge').textContent = data.motor === 'openai_llm' ? 'OpenAI GPT' : (data.motor === 'gemini_llm' ? 'Google Gemini' : 'Local NLP (0ms)');
+
+        addBotMessage(data.respuesta, data.sugerencias);
+
+        if (data.esLeadPotencial) {
+          showLeadPrompt(data.respuesta);
+        }
+      } catch (err) {
+        addBotMessage('Hubo un error de conexión con el servidor.');
+      }
+    }
+
+    function showLeadPrompt(context) {
+      setTimeout(() => {
+        const messagesEl = document.getElementById('chatMessages');
+        const leadBox = document.createElement('div');
+        leadBox.className = 'bubble bot';
+        leadBox.style.border = '1px solid #10b981';
+        leadBox.style.background = 'rgba(16, 185, 129, 0.1)';
+        leadBox.innerHTML = `
+          <strong>¿Deseas que un asesor se comunique contigo?</strong>
+          <p style="font-size:12px; margin: 4px 0 10px;">Deja tu nombre y contacto para darte seguimiento prioritario:</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <input id="quickName" placeholder="Tu nombre..." style="padding:8px; border-radius:6px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:12px;">
+            <input id="quickContact" placeholder="Tu WhatsApp o Teléfono..." style="padding:8px; border-radius:6px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:12px;">
+            <button class="btn btn-primary" style="padding:6px; font-size:12px;" onclick="submitLead()">Enviar Contacto 🚀</button>
+          </div>
+        `;
+        messagesEl.appendChild(leadBox);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }, 500);
+    }
+
+    async function submitLead() {
+      const nombre = document.getElementById('quickName')?.value.trim();
+      const contacto = document.getElementById('quickContact')?.value.trim();
+      if (!nombre || !contacto) return alert('Por favor completa tu nombre y contacto.');
+
+      try {
+        const res = await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            projectId: activeProjectId,
+            nombre,
+            contacto,
+            interes: `Lead generado en consulta interactiva sobre ${activeProjectId}`
+          })
+        });
+
+        const data = await res.json();
+        alert('✓ ' + data.mensaje);
+        loadLeads();
+      } catch {
+        alert('No se pudo registrar el lead.');
+      }
+    }
+
+    async function loadLeads() {
+      try {
+        const res = await fetch('/api/leads');
+        const data = await res.json();
+        const container = document.getElementById('leadsList');
+        if (!data.leads || !data.leads.length) {
+          container.innerHTML = '<span style="font-size:12px; color:var(--text-muted);">No hay leads registrados aún.</span>';
+          return;
+        }
+
+        container.innerHTML = data.leads.slice(0, 5).map(l => `
+          <div class="lead-item">
+            <div style="display:flex; justify-content:space-between;">
+              <strong>${l.nombre}</strong>
+              <span class="badge badge-success">${l.projectId}</span>
+            </div>
+            <span>📱 ${l.contacto}</span>
+            <small style="color:#64748b; font-size:11px;">${new Date(l.fecha).toLocaleDateString()} · ${l.interes || 'Consulta'}</small>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error cargando leads:', err);
+      }
+    }
+
+    function copyEmbed() {
+      const code = document.getElementById('embedSnippet').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('✓ ¡Etiqueta de widget copiada al portapapeles! Puedes pegarla en cualquier sitio web.');
+      });
+    }
+
+    function testEmbedModal() {
+      alert('Para incrustar este chatbot en cualquier sitio web tuyo o de clientes, pega el código que aparece en el panel derecho antes del cierre </body>.');
+    }
+
+    init();
+  </script>
+</body>
+</html>

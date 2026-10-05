@@ -1,0 +1,12 @@
+[
+  {
+    "id": "LEAD-001",
+    "fecha": "2026-10-05T14:30:00.000Z",
+    "projectId": "premium-home",
+    "nombre": "Alejandro Morales",
+    "contacto": "+51 998 877 665",
+    "email": "alejandro.morales@gmail.com",
+    "interes": "Interesado en Villa Moderna con piscina (US$ 50,000)",
+    "origen": "chatbot-web"
+  }
+]

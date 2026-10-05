@@ -1,0 +1,33 @@
+{
+  "name": "chatbot-clientes-api",
+  "version": "2.0.0",
+  "description": "Plataforma de Asistentes Virtuales y Chatbots de Atención al Cliente Multi-Negocio con Búsqueda Semántica Local, LLM Opcional y Widget Embebible",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test test/api.test.mjs"
+  },
+  "keywords": [
+    "chatbot",
+    "customer-service",
+    "ai",
+    "nlp",
+    "multi-tenant",
+    "embeddable-widget",
+    "lead-generation",
+    "openai",
+    "gemini",
+    "express",
+    "rest-api"
+  ],
+  "author": "Jp3528",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "openai": "^6.39.0"
+  }
+}
