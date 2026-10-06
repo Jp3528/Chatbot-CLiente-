@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NexusChat API — Plataforma B2B de Asistentes Virtuales & Captura de Leads</title>
-  <meta name="description" content="Plataforma comercial de chatbots inteligentes multi-negocio. Conecta asistentes con catálogo, FAQs y captura de clientes potenciales con botón directo a WhatsApp.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236366f1'/%3E%3Cpath d='M8 12 Q16 4 24 12 Q24 24 8 20 Z' fill='%23ffffff'/%3E%3Ccircle cx='12' cy='14' r='2' fill='%236366f1'/%3E%3Ccircle cx='20' cy='14' r='2' fill='%236366f1'/%3E%3C/svg%3E">
+  <meta name="description" content="Plataforma comercial de chatbots inteligentes multi-negocio con catálogo, captura de clientes potenciales y conexión directa con WhatsApp.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M8 12 Q16 4 24 12 Q24 24 8 20 Z' fill='%23ffffff'/%3E%3Ccircle cx='12' cy='14' r='2' fill='%234f46e5'/%3E%3Ccircle cx='20' cy='14' r='2' fill='%234f46e5'/%3E%3C/svg%3E">
   
   <!-- Tipografía Moderna Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN Oficial -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
             mono: ['JetBrains Mono', 'ui-monospace', 'monospace']
           },
           colors: {
-            primary: {
+            brand: {
               50: '#eef2ff',
               100: '#e0e7ff',
               200: '#c7d2fe',
@@ -43,40 +42,32 @@
   </script>
 
   <style>
-    /* Estilos base de calidad SaaS */
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background-color: #0b0f19;
-      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
     }
 
-    /* Fondo degradado ambiental sutil */
-    .ambient-glow {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1000px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+    /* Fondo degradado suave comercial y vibrante */
+    .saas-bg {
+      background: radial-gradient(1200px circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, rgba(244, 114, 182, 0.04) 40%, #f8fafc 80%);
+      min-height: 100vh;
     }
 
-    /* Scrollbars discretos */
+    /* Scrollbars modernos */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.6);
+      background: #f1f5f9;
     }
     ::-webkit-scrollbar-thumb {
-      background: #334155;
+      background: #cbd5e1;
       border-radius: 999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #475569;
+      background: #94a3b8;
     }
 
     /* Animación de puntos de escritura */
@@ -91,43 +82,38 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col relative antialiased selection:bg-indigo-500 selection:text-white">
+<body class="saas-bg flex flex-col min-h-screen selection:bg-indigo-500 selection:text-white">
 
-  <!-- Glow ambiental de fondo -->
-  <div class="ambient-glow"></div>
-
-  <!-- Header Superior Estilo Stripe / Linear -->
-  <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-xl border-b border-slate-800/80">
+  <!-- Header Superior Estilo Intercom / Stripe -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
       
       <!-- Logo y Branding -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 p-0.5 shadow-lg shadow-indigo-500/25 flex items-center justify-center">
-          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-indigo-400 to-purple-300 text-lg">N</span>
-          </div>
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-600 shadow-md shadow-indigo-500/25 flex items-center justify-center text-white font-extrabold text-lg">
+          N
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <span class="font-bold text-white text-base tracking-tight">NexusChat API</span>
-            <span class="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Studio B2B</span>
+            <span class="font-extrabold text-slate-900 text-base tracking-tight">NexusChat API</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Plataforma B2B</span>
           </div>
-          <p class="text-xs text-slate-400 hidden sm:block">Motor de Chatbots Inteligentes & Captura de Prospectos Multi-Negocio</p>
+          <p class="text-xs text-slate-500 hidden sm:block">Asistentes Virtuales con Catálogo & Captura de Prospectos</p>
         </div>
       </div>
 
-      <!-- Estado en vivo -->
-      <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Servidor Online · Latencia 0ms (Local NLP)</span>
+      <!-- Estado en vivo comercial -->
+      <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Servidor Activo · 0ms Latencia (Motor Semántico Local)</span>
       </div>
 
       <!-- Acciones de Cabecera -->
       <div class="flex items-center gap-2.5">
-        <button onclick="openGuideModal()" class="px-3.5 py-2 text-xs font-medium text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 rounded-lg transition shadow-sm">
+        <button onclick="openGuideModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-700 hover:text-indigo-600 bg-slate-100 hover:bg-slate-200/80 rounded-xl transition shadow-xs">
           ¿Cómo Funciona?
         </button>
-        <button onclick="exportLeadsCSV()" class="px-3.5 py-2 text-xs font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-lg transition shadow-md shadow-indigo-600/20 flex items-center gap-1.5">
+        <button onclick="exportLeadsCSV()" class="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition shadow-md shadow-indigo-600/20 flex items-center gap-1.5">
           <span>Exportar Leads CSV</span>
         </button>
       </div>
@@ -135,39 +121,39 @@
     </div>
   </header>
 
-  <!-- Barra de Métricas Principales -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 w-full relative z-10">
+  <!-- Métricas Comerciales Principales (Cards Luminosas y Vivas) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 w-full">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
       
-      <div class="bg-gradient-to-b from-slate-900 to-slate-900/60 p-4 rounded-xl border border-slate-800/80 shadow-lg shadow-black/20 hover:border-slate-700 transition">
-        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">Empresas Conectadas</span>
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-indigo-600">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Empresas Conectadas</span>
         <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-white" id="kpiTenants">4</span>
-          <span class="text-xs font-medium text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">Multi-Inquilino</span>
+          <span class="text-2xl sm:text-3xl font-extrabold text-slate-900" id="kpiTenants">4</span>
+          <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md">Multi-Inquilino</span>
         </div>
       </div>
 
-      <div class="bg-gradient-to-b from-slate-900 to-slate-900/60 p-4 rounded-xl border border-slate-800/80 shadow-lg shadow-black/20 hover:border-slate-700 transition">
-        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">Consultas Procesadas</span>
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-emerald-500">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Consultas Procesadas</span>
         <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-white">1,428</span>
-          <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">99.8% Automatizadas</span>
+          <span class="text-2xl sm:text-3xl font-extrabold text-slate-900">1,428</span>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">99.8% Automatizadas</span>
         </div>
       </div>
 
-      <div class="bg-gradient-to-b from-slate-900 to-slate-900/60 p-4 rounded-xl border border-slate-800/80 shadow-lg shadow-black/20 hover:border-slate-700 transition">
-        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">Leads en CRM</span>
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-purple-600">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Leads en CRM</span>
         <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-emerald-400" id="kpiLeadsCount">1</span>
-          <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Capturados en Chat</span>
+          <span class="text-2xl sm:text-3xl font-extrabold text-emerald-600" id="kpiLeadsCount">1</span>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">Capturados en Chat</span>
         </div>
       </div>
 
-      <div class="bg-gradient-to-b from-slate-900 to-slate-900/60 p-4 rounded-xl border border-slate-800/80 shadow-lg shadow-black/20 hover:border-slate-700 transition">
-        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">Velocidad de Respuesta</span>
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-sky-500">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Velocidad de Respuesta</span>
         <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-white">&lt; 0.05s</span>
-          <span class="text-xs font-medium text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">Zero Cost Engine</span>
+          <span class="text-2xl sm:text-3xl font-extrabold text-slate-900">&lt; 0.05s</span>
+          <span class="text-xs font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md">Cero Costo de API</span>
         </div>
       </div>
 
@@ -175,19 +161,19 @@
   </section>
 
   <!-- Contenedor Principal: 3 Columnas Dinámicas -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 w-full flex-1 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-    <!-- COLUMNA 1: Selector de Negocios & Base de Conocimiento (Col 1 a 4) -->
+    <!-- COLUMNA 1: Selector de Empresas & Catálogo de Productos (Col 1 a 4) -->
     <div class="lg:col-span-4 flex flex-col gap-5">
       
-      <!-- Panel de Negocios -->
-      <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden backdrop-blur-md">
-        <div class="p-4 border-b border-slate-800 flex items-center justify-between">
+      <!-- Panel de Negocios Disponibles -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+        <div class="p-4 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300">Negocios Vinculados</h2>
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Negocios Vinculados</h2>
           </div>
-          <span class="text-xs text-slate-500 font-medium">4 Disponibles</span>
+          <span class="text-xs text-slate-500 font-semibold">4 Disponibles</span>
         </div>
 
         <div class="p-3 flex flex-col gap-2" id="businessList">
@@ -196,34 +182,34 @@
       </div>
 
       <!-- Ficha del Negocio Activo + Pestañas de Catálogo / FAQ -->
-      <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden backdrop-blur-md">
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
         
         <!-- Cabecera de la empresa seleccionada -->
-        <div class="p-4 bg-slate-800/40 border-b border-slate-800">
+        <div class="p-4 bg-gradient-to-r from-slate-50 to-indigo-50/40 border-b border-slate-200">
           <div class="flex items-start justify-between gap-2">
             <div>
-              <h3 class="text-base font-bold text-white tracking-tight" id="activeBizName">Premium Home Inmobiliaria</h3>
-              <span class="inline-block mt-0.5 text-xs font-medium text-indigo-400" id="activeBizCategory">Bienes Raíces & Vivienda</span>
+              <h3 class="text-base font-extrabold text-slate-900 tracking-tight" id="activeBizName">Premium Home Inmobiliaria</h3>
+              <span class="inline-block mt-0.5 text-xs font-bold text-indigo-600" id="activeBizCategory">Inmobiliaria & Bienes Raíces</span>
             </div>
-            <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Activo</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">Activo</span>
           </div>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed" id="activeBizDesc">Cargando información del negocio...</p>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed" id="activeBizDesc">Cargando información del negocio...</p>
           
-          <div class="mt-3 pt-3 border-t border-slate-800/80 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+          <div class="mt-3 pt-3 border-t border-slate-200/80 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 font-medium">
             <span id="activeBizPhone">Tel: +51 987 654 321</span>
             <span id="activeBizSchedule">Horario: Lun-Sáb 9am-7pm</span>
           </div>
         </div>
 
         <!-- Pestañas de Navegación del Conocimiento -->
-        <div class="flex border-b border-slate-800 bg-slate-950/40 px-2 pt-2 gap-1 text-xs">
-          <button onclick="switchTab('catalog')" id="tabBtnCatalog" class="px-3 py-2 font-semibold text-indigo-400 border-b-2 border-indigo-500 transition">
+        <div class="flex border-b border-slate-200 bg-slate-50 px-2 pt-2 gap-1 text-xs">
+          <button onclick="switchTab('catalog')" id="tabBtnCatalog" class="px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition">
             Catálogo & Precios
           </button>
-          <button onclick="switchTab('faqs')" id="tabBtnFaqs" class="px-3 py-2 font-medium text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition">
+          <button onclick="switchTab('faqs')" id="tabBtnFaqs" class="px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition">
             Preguntas (FAQs)
           </button>
-          <button onclick="switchTab('rules')" id="tabBtnRules" class="px-3 py-2 font-medium text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition">
+          <button onclick="switchTab('rules')" id="tabBtnRules" class="px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition">
             Políticas
           </button>
         </div>
@@ -231,7 +217,7 @@
         <!-- Contenidos de las pestañas -->
         <div class="p-4 max-h-[380px] overflow-y-auto">
           
-          <!-- Tab 1: Catálogo con Precios -->
+          <!-- Tab 1: Catálogo con Precios Vivos -->
           <div id="tabCatalog" class="flex flex-col gap-2.5">
             <!-- Se llena dinámicamente con productos y precios -->
           </div>
@@ -243,7 +229,7 @@
 
           <!-- Tab 3: Políticas -->
           <div id="tabRules" class="hidden flex-col gap-2">
-            <ul id="rulesList" class="space-y-2 text-xs text-slate-300"></ul>
+            <ul id="rulesList" class="space-y-2 text-xs text-slate-700"></ul>
           </div>
 
         </div>
@@ -253,67 +239,67 @@
     </div>
 
     <!-- COLUMNA 2: Simulador Interactivo del Cliente (Col 5 a 8) -->
-    <div class="lg:col-span-5 bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden flex flex-col h-[740px] backdrop-blur-md">
+    <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden flex flex-col h-[740px]">
       
       <!-- Barra Superior tipo Ventana Navegador -->
-      <div class="bg-slate-950/80 px-4 py-3 border-b border-slate-800 flex items-center justify-between gap-3">
+      <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex items-center justify-between gap-3">
         <div class="flex items-center gap-1.5">
-          <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-          <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-          <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+          <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
         </div>
-        <div class="flex-1 bg-slate-900 border border-slate-800 rounded-md px-3 py-1 text-center font-mono text-[11px] text-slate-400 truncate" id="simBrowserUrl">
+        <div class="flex-1 bg-white border border-slate-200 rounded-md px-3 py-1 text-center font-mono text-[11px] text-slate-600 truncate shadow-2xs" id="simBrowserUrl">
           https://chat.asistente.cloud/v2/premium-home
         </div>
-        <span class="text-[11px] font-medium text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20" id="engineBadge">
+        <span class="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200" id="engineBadge">
           Local NLP (0ms)
         </span>
       </div>
 
-      <!-- Cabecera del Asistente en el Chat -->
-      <div class="p-3.5 bg-slate-800/40 border-b border-slate-800/80 flex items-center justify-between gap-3">
+      <!-- Cabecera del Asistente en el Chat (Estilo Intercom) -->
+      <div class="p-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between gap-3 shadow-xs">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white text-sm shadow-md shadow-indigo-600/30" id="chatAvatar">
+          <div class="w-9 h-9 rounded-xl bg-white text-indigo-600 flex items-center justify-center font-black text-sm shadow-sm" id="chatAvatar">
             PH
           </div>
           <div>
             <h4 class="text-sm font-bold text-white leading-tight" id="chatTitle">Premium Home Inmobiliaria</h4>
-            <div class="flex items-center gap-1.5 text-xs text-emerald-400 mt-0.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span>Asistente virtual activo</span>
+            <div class="flex items-center gap-1.5 text-xs text-emerald-200 mt-0.5 font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-300"></span>
+              <span>Asistente virtual en línea</span>
             </div>
           </div>
         </div>
 
-        <button onclick="resetChat()" class="text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 transition">
+        <button onclick="resetChat()" class="text-xs text-white/90 hover:text-white px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 transition font-semibold">
           Reiniciar
         </button>
       </div>
 
       <!-- Área de Mensajes -->
-      <div class="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-950/40" id="chatMessages">
+      <div class="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50/70" id="chatMessages">
         <!-- Burbujas del chat inyectadas dinámicamente -->
       </div>
 
       <!-- Indicador de Escritura -->
-      <div id="typingBox" class="hidden px-4 py-2 bg-slate-950/60 items-center gap-1.5 text-xs text-slate-400">
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 typing-dot"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 typing-dot"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 typing-dot"></span>
-        <span class="ml-1 text-[11px]">Asistente generando respuesta...</span>
+      <div id="typingBox" class="hidden px-4 py-2 bg-slate-100/90 items-center gap-1.5 text-xs text-slate-500 border-t border-slate-200">
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 typing-dot"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 typing-dot"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 typing-dot"></span>
+        <span class="ml-1 text-[11px] font-medium text-slate-600">Asistente redactando respuesta...</span>
       </div>
 
       <!-- Barra de Entrada Inferior -->
-      <div class="p-3.5 bg-slate-900 border-t border-slate-800">
+      <div class="p-3.5 bg-white border-t border-slate-200">
         <form onsubmit="event.preventDefault(); handleSend();" class="flex gap-2">
-          <input type="text" id="chatInput" placeholder="Haz una consulta (ej. ¿cuánto cuesta?, ¿tienen piscina?, ¿horarios?)..." class="flex-1 bg-slate-950 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" autocomplete="off">
-          <button type="submit" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm shadow-md shadow-indigo-600/20 transition flex items-center justify-center">
+          <input type="text" id="chatInput" placeholder="Escribe tu consulta (ej. ¿cuánto cuesta?, ¿tienen piscina?, ¿horarios?)..." class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition" autocomplete="off">
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-sm shadow-md shadow-indigo-600/20 transition flex items-center justify-center">
             <span>Enviar</span>
           </button>
         </form>
         <div class="mt-2 text-[11px] text-slate-500 flex justify-between items-center">
-          <span>Presiona Enter ↵ para consultar el motor semántico</span>
-          <span class="text-slate-400" id="latencyIndicator">0ms latencia</span>
+          <span>Presiona Enter ↵ para enviar</span>
+          <span class="text-slate-600 font-medium" id="latencyIndicator">0ms latencia</span>
         </div>
       </div>
 
@@ -323,19 +309,19 @@
     <div class="lg:col-span-3 flex flex-col gap-5">
       
       <!-- CRM de Leads en Vivo -->
-      <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden backdrop-blur-md">
-        <div class="p-4 border-b border-slate-800 flex items-center justify-between">
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+        <div class="p-4 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300">Bandeja de Leads (CRM)</h2>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Bandeja de Leads (CRM)</h2>
           </div>
-          <button onclick="loadLeads()" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium">Refrescar</button>
+          <button onclick="loadLeads()" class="text-xs text-indigo-600 hover:text-indigo-700 font-bold">Refrescar</button>
         </div>
 
         <div class="p-3.5">
-          <div class="flex items-center justify-between text-xs text-slate-400 mb-2.5">
-            <span>Prospectos capturados:</span>
-            <span class="font-mono text-emerald-400 font-semibold" id="leadsBadge">1 contacto</span>
+          <div class="flex items-center justify-between text-xs text-slate-500 mb-2.5">
+            <span class="font-medium">Prospectos capturados:</span>
+            <span class="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded" id="leadsBadge">1 contacto</span>
           </div>
 
           <!-- Lista de Prospectos -->
@@ -346,43 +332,43 @@
       </div>
 
       <!-- Generador de Código para Clientes -->
-      <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl p-4 backdrop-blur-md flex flex-col gap-3">
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4.5 flex flex-col gap-3">
         <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Incrustar en Cualquier Web</h3>
-          <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">1 Línea</span>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Incrustar en Cualquier Web</h3>
+          <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">1 Línea</span>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">
-          Pega esta etiqueta antes de <code class="text-indigo-400 font-mono">&lt;/body&gt;</code> en tu web para activar el chat flotante:
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Pega esta etiqueta antes de <code class="text-indigo-600 font-mono font-bold">&lt;/body&gt;</code> en tu web para activar el chat flotante:
         </p>
 
-        <!-- Bloque de Código -->
-        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono text-xs text-purple-300 break-all select-all leading-relaxed shadow-inner" id="codeSnippetBox">
+        <!-- Bloque de Código Luminoso -->
+        <div class="bg-slate-100 p-3 rounded-xl border border-slate-200/80 font-mono text-xs text-indigo-700 break-all select-all leading-relaxed shadow-inner" id="codeSnippetBox">
           &lt;script src="https://dominio.com/widget.js" data-project="premium-home"&gt;&lt;/script&gt;
         </div>
 
         <!-- Paleta de Colores Vivos para el Widget -->
         <div class="flex items-center justify-between gap-2 pt-1">
           <div class="flex items-center gap-1.5">
-            <span class="text-xs text-slate-400 font-medium mr-1">Color:</span>
-            <button onclick="setWidgetColor('#0f766e')" class="w-5 h-5 rounded-md bg-[#0f766e] border border-white/20 hover:scale-110 transition" title="Teal"></button>
-            <button onclick="setWidgetColor('#ea580c')" class="w-5 h-5 rounded-md bg-[#ea580c] border border-white/20 hover:scale-110 transition" title="Naranja"></button>
-            <button onclick="setWidgetColor('#0284c7')" class="w-5 h-5 rounded-md bg-[#0284c7] border border-white/20 hover:scale-110 transition" title="Azul"></button>
-            <button onclick="setWidgetColor('#6366f1')" class="w-5 h-5 rounded-md bg-[#6366f1] border border-white/20 hover:scale-110 transition" title="Indigo"></button>
-            <button onclick="setWidgetColor('#ec4899')" class="w-5 h-5 rounded-md bg-[#ec4899] border border-white/20 hover:scale-110 transition" title="Rosa"></button>
+            <span class="text-xs text-slate-600 font-bold mr-1">Color:</span>
+            <button onclick="setWidgetColor('#0f766e')" class="w-5 h-5 rounded-md bg-[#0f766e] border border-black/10 hover:scale-110 transition shadow-2xs" title="Teal"></button>
+            <button onclick="setWidgetColor('#ea580c')" class="w-5 h-5 rounded-md bg-[#ea580c] border border-black/10 hover:scale-110 transition shadow-2xs" title="Naranja"></button>
+            <button onclick="setWidgetColor('#0284c7')" class="w-5 h-5 rounded-md bg-[#0284c7] border border-black/10 hover:scale-110 transition shadow-2xs" title="Azul"></button>
+            <button onclick="setWidgetColor('#6366f1')" class="w-5 h-5 rounded-md bg-[#6366f1] border border-black/10 hover:scale-110 transition shadow-2xs" title="Indigo"></button>
+            <button onclick="setWidgetColor('#ec4899')" class="w-5 h-5 rounded-md bg-[#ec4899] border border-black/10 hover:scale-110 transition shadow-2xs" title="Rosa"></button>
           </div>
-          <button onclick="copySnippet()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition flex items-center gap-1">
+          <button onclick="copySnippet()" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white transition flex items-center gap-1 shadow-xs">
             <span>Copiar</span>
           </button>
         </div>
       </div>
 
-      <!-- Telemetría JSON de la API -->
-      <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl p-4 backdrop-blur-md">
+      <!-- Telemetría JSON de la API (Luminosa y Legible) -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Telemetría JSON</span>
-          <span class="text-[10px] font-mono text-emerald-400">HTTP 200</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-800">Telemetría de Respuesta</span>
+          <span class="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">HTTP 200</span>
         </div>
-        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 font-mono text-[11px] text-emerald-400/90 max-h-[140px] overflow-y-auto whitespace-pre leading-relaxed" id="telemetryBox">// Haz una consulta en el chat para inspeccionar el payload de /api/chat...</div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-800 max-h-[140px] overflow-y-auto whitespace-pre leading-relaxed shadow-inner" id="telemetryBox">// Haz una consulta en el chat para inspeccionar el payload de /api/chat...</div>
       </div>
 
     </div>
@@ -390,37 +376,37 @@
   </main>
 
   <!-- Modal Explicativo: Cómo Funciona el Producto -->
-  <div id="guideModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 max-w-lg w-full rounded-2xl p-6 shadow-2xl flex flex-col gap-4">
+  <div id="guideModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 max-w-lg w-full rounded-2xl p-6 shadow-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold text-white tracking-tight">¿Cómo Funciona NexusChat API?</h3>
-        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+        <h3 class="text-lg font-bold text-slate-900 tracking-tight">¿Cómo Funciona NexusChat API?</h3>
+        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-700 text-lg">✕</button>
       </div>
 
-      <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
-        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-          <strong class="text-white block mb-0.5">1. Plataforma Multi-Empresa</strong>
-          <p class="text-xs text-slate-400">Cada negocio (inmobiliaria, restaurante, clínica dental, tienda) tiene su propio catálogo de productos, precios y preguntas frecuentes aislado.</p>
+      <div class="space-y-3 text-sm text-slate-700 leading-relaxed">
+        <div class="p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
+          <strong class="text-slate-900 block mb-0.5">1. Plataforma Multi-Empresa</strong>
+          <p class="text-xs text-slate-600">Cada negocio (inmobiliaria, restaurante, clínica dental, tienda) tiene su propio catálogo de productos, precios y preguntas frecuentes aislado.</p>
         </div>
 
-        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-          <strong class="text-white block mb-0.5">2. Captura Automática de Prospectos (Leads)</strong>
-          <p class="text-xs text-slate-400">Cuando un cliente muestra interés real en comprar o agendar, el asistente le pide su nombre y WhatsApp. El lead se guarda al instante en la bandeja CRM.</p>
+        <div class="p-3 rounded-xl bg-emerald-50/60 border border-emerald-100">
+          <strong class="text-slate-900 block mb-0.5">2. Captura Automática de Prospectos (Leads)</strong>
+          <p class="text-xs text-slate-600">Cuando un cliente muestra interés real en comprar o agendar, el asistente le pide su nombre y WhatsApp. El lead se guarda al instante en la bandeja CRM.</p>
         </div>
 
-        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-          <strong class="text-white block mb-0.5">3. Conexión Directa con WhatsApp</strong>
-          <p class="text-xs text-slate-400">Al hacer clic en el botón verde de WhatsApp del prospecto, el asesor de ventas inicia la conversación en 1 clic con el cliente ya interesado.</p>
+        <div class="p-3 rounded-xl bg-purple-50/60 border border-purple-100">
+          <strong class="text-slate-900 block mb-0.5">3. Conexión Directa con WhatsApp</strong>
+          <p class="text-xs text-slate-600">Al hacer clic en el botón verde de WhatsApp del prospecto, el asesor de ventas inicia la conversación en 1 clic con el cliente ya interesado.</p>
         </div>
 
-        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-          <strong class="text-white block mb-0.5">4. Fácil de Vender e Instalar</strong>
-          <p class="text-xs text-slate-400">A tu cliente solo le entregas 1 línea de código <code class="text-indigo-400 font-mono">&lt;script&gt;</code> para que lo pegue en su página web y tenga el chatbot funcionando.</p>
+        <div class="p-3 rounded-xl bg-sky-50/60 border border-sky-100">
+          <strong class="text-slate-900 block mb-0.5">4. Fácil de Vender e Instalar</strong>
+          <p class="text-xs text-slate-600">A tu cliente solo le entregas 1 línea de código <code class="text-indigo-600 font-mono font-bold">&lt;script&gt;</code> para que lo pegue en su página web y tenga el chatbot funcionando.</p>
         </div>
       </div>
 
       <div class="flex justify-end pt-2">
-        <button onclick="closeGuideModal()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl transition">
+        <button onclick="closeGuideModal()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition shadow-sm">
           Entendido
         </button>
       </div>
@@ -428,7 +414,7 @@
   </div>
 
   <!-- Toast Flotante -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 border border-slate-700 text-white px-4 py-3 rounded-xl shadow-2xl text-xs font-semibold transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2">
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4.5 py-3 rounded-xl shadow-xl text-xs font-semibold transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2">
     <span id="toastIcon" class="w-2 h-2 rounded-full bg-emerald-400"></span>
     <span id="toastMsg">Mensaje de notificación</span>
   </div>
@@ -443,10 +429,10 @@
     let leadsCache = [];
 
     const BUSINESS_COLORS = {
-      'premium-home': { bg: 'bg-teal-500/10', border: 'border-teal-500/30', text: 'text-teal-400', badge: 'bg-teal-500' },
-      'la-esquina': { bg: 'bg-orange-500/10', border: 'border-orange-500/30', text: 'text-orange-400', badge: 'bg-orange-500' },
-      'sonrisa-dental': { bg: 'bg-sky-500/10', border: 'border-sky-500/30', text: 'text-sky-400', badge: 'bg-sky-500' },
-      'nexus-tech': { bg: 'bg-purple-500/10', border: 'border-purple-500/30', text: 'text-purple-400', badge: 'bg-purple-500' }
+      'premium-home': { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-700', badge: 'bg-emerald-600' },
+      'la-esquina': { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-700', badge: 'bg-orange-500' },
+      'sonrisa-dental': { bg: 'bg-sky-50', border: 'border-sky-200', text: 'text-sky-700', badge: 'bg-sky-500' },
+      'nexus-tech': { bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-700', badge: 'bg-purple-600' }
     };
 
     const MONOGRAMS = {
@@ -479,21 +465,21 @@
         
         container.innerHTML = data.negocios.map(b => {
           const mono = MONOGRAMS[b.id] || b.nombre.substring(0, 2).toUpperCase();
-          const colors = BUSINESS_COLORS[b.id] || { bg: 'bg-indigo-500/10', border: 'border-indigo-500/30', text: 'text-indigo-400', badge: 'bg-indigo-500' };
+          const colors = BUSINESS_COLORS[b.id] || { bg: 'bg-indigo-50', border: 'border-indigo-200', text: 'text-indigo-700', badge: 'bg-indigo-600' };
           const isActive = b.id === activeProjectId;
 
           return `
-            <button onclick="selectBusiness('${b.id}')" id="biz-btn-${b.id}" class="w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between gap-3 ${isActive ? 'bg-indigo-600/15 border-indigo-500 shadow-md shadow-indigo-600/10' : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 hover:bg-slate-800/40'}">
+            <button onclick="selectBusiness('${b.id}')" id="biz-btn-${b.id}" class="w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between gap-3 ${isActive ? 'bg-indigo-50 border-indigo-500 shadow-sm' : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/60'}">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs text-white ${colors.badge} shadow-sm">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs text-white ${colors.badge} shadow-xs">
                   ${mono}
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-white tracking-tight leading-snug">${b.nombre}</h4>
-                  <span class="text-[11px] text-slate-400">${b.categoria}</span>
+                  <h4 class="text-xs font-bold text-slate-900 tracking-tight leading-snug">${b.nombre}</h4>
+                  <span class="text-[11px] text-slate-500 font-medium">${b.categoria}</span>
                 </div>
               </div>
-              <span class="w-2 h-2 rounded-full ${isActive ? 'bg-emerald-400 shadow-sm shadow-emerald-400' : 'bg-slate-600'}"></span>
+              <span class="w-2.5 h-2.5 rounded-full ${isActive ? 'bg-emerald-500 ring-2 ring-emerald-200' : 'bg-slate-300'}"></span>
             </button>
           `;
         }).join('');
@@ -507,11 +493,11 @@
     async function selectBusiness(id) {
       activeProjectId = id;
       document.querySelectorAll('#businessList button').forEach(b => {
-        b.className = b.className.replace(/bg-indigo-600\/15 border-indigo-500/g, 'bg-slate-950/60 border-slate-800');
+        b.className = b.className.replace(/bg-indigo-50 border-indigo-500 shadow-sm/g, 'bg-slate-50 border-slate-200');
       });
       const activeBtn = document.getElementById(`biz-btn-${id}`);
       if (activeBtn) {
-        activeBtn.className = activeBtn.className.replace('bg-slate-950/60 border-slate-800', 'bg-indigo-600/15 border-indigo-500');
+        activeBtn.className = activeBtn.className.replace('bg-slate-50 border-slate-200', 'bg-indigo-50 border-indigo-500 shadow-sm');
       }
 
       try {
@@ -561,14 +547,14 @@
       container.innerHTML = items.map(item => {
         const price = item.precio === 0 ? 'GRATIS' : `${item.moneda || 'S/'} ${Number(item.precio).toLocaleString()}`;
         return `
-          <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 hover:border-slate-700 transition flex flex-col gap-1.5">
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition flex flex-col gap-1.5 shadow-2xs">
             <div class="flex items-start justify-between gap-2">
-              <h5 class="text-xs font-bold text-white leading-tight">${item.nombre}</h5>
-              <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 whitespace-nowrap">${price}</span>
+              <h5 class="text-xs font-bold text-slate-900 leading-tight">${item.nombre}</h5>
+              <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-md border border-emerald-200 whitespace-nowrap">${price}</span>
             </div>
-            <p class="text-[11px] text-slate-400 leading-normal">${item.descripcion || ''} ${item.detalles ? '· ' + item.detalles : ''}</p>
+            <p class="text-[11px] text-slate-600 leading-normal">${item.descripcion || ''} ${item.detalles ? '· ' + item.detalles : ''}</p>
             <div class="flex justify-end pt-1">
-              <button onclick="sendQuery('¿Cuál es el precio y detalles de ${item.nombre}?')" class="text-[11px] font-semibold text-indigo-400 hover:text-indigo-300 px-2 py-1 rounded bg-indigo-500/10 hover:bg-indigo-500/20 transition">
+              <button onclick="sendQuery('¿Cuál es el precio y detalles de ${item.nombre}?')" class="text-[11px] font-bold text-indigo-700 hover:text-indigo-800 px-2.5 py-1 rounded-md bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 transition">
                 Consultar en Chat ↵
               </button>
             </div>
@@ -585,14 +571,14 @@
       }
 
       container.innerHTML = faqs.map((f, i) => `
-        <div class="rounded-xl bg-slate-950/70 border border-slate-800 overflow-hidden">
-          <button onclick="toggleFaq(${i})" class="w-full text-left p-3 text-xs font-bold text-white flex justify-between items-center gap-2 hover:bg-slate-800/30">
+        <div class="rounded-xl bg-slate-50 border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(${i})" class="w-full text-left p-3 text-xs font-bold text-slate-900 flex justify-between items-center gap-2 hover:bg-slate-100/60">
             <span>${f.pregunta}</span>
-            <span class="text-slate-500 text-xs">▼</span>
+            <span class="text-slate-400 text-xs">▼</span>
           </button>
-          <div id="faq-ans-${i}" class="hidden p-3 pt-0 text-[11px] text-slate-400 border-t border-slate-800/60 leading-relaxed bg-slate-900/40">
-            <p class="py-1">${f.respuesta}</p>
-            <button onclick="sendQuery('${f.pregunta}')" class="mt-1 text-[11px] text-indigo-400 hover:text-indigo-300 font-semibold">
+          <div id="faq-ans-${i}" class="hidden p-3 pt-0 text-[11px] text-slate-600 border-t border-slate-200 leading-relaxed bg-white">
+            <p class="py-1.5">${f.respuesta}</p>
+            <button onclick="sendQuery('${f.pregunta}')" class="mt-1 text-[11px] text-indigo-600 hover:text-indigo-700 font-bold">
               Probar en el chat →
             </button>
           </div>
@@ -612,14 +598,14 @@
         return;
       }
       container.innerHTML = rules.map(r => `
-        <li class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800 leading-relaxed">${r}</li>
+        <li class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 leading-relaxed text-slate-700">${r}</li>
       `).join('');
     }
 
     function switchTab(tab) {
-      document.getElementById('tabBtnCatalog').className = tab === 'catalog' ? 'px-3 py-2 font-semibold text-indigo-400 border-b-2 border-indigo-500 transition' : 'px-3 py-2 font-medium text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition';
-      document.getElementById('tabBtnFaqs').className = tab === 'faqs' ? 'px-3 py-2 font-semibold text-indigo-400 border-b-2 border-indigo-500 transition' : 'px-3 py-2 font-medium text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition';
-      document.getElementById('tabBtnRules').className = tab === 'rules' ? 'px-3 py-2 font-semibold text-indigo-400 border-b-2 border-indigo-500 transition' : 'px-3 py-2 font-medium text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition';
+      document.getElementById('tabBtnCatalog').className = tab === 'catalog' ? 'px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
+      document.getElementById('tabBtnFaqs').className = tab === 'faqs' ? 'px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
+      document.getElementById('tabBtnRules').className = tab === 'rules' ? 'px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
 
       document.getElementById('tabCatalog').classList.toggle('hidden', tab !== 'catalog');
       document.getElementById('tabFaqs').classList.toggle('hidden', tab !== 'faqs');
@@ -650,7 +636,7 @@
         suggestionsHtml = `
           <div class="flex flex-wrap gap-1.5 mt-2.5">
             ${suggestions.map(s => `
-              <button onclick="sendQuery('${s.replace(/'/g, "\\'")}')" class="text-xs bg-slate-800 hover:bg-indigo-600/30 text-indigo-300 border border-slate-700/80 hover:border-indigo-500/50 px-2.5 py-1 rounded-full transition">
+              <button onclick="sendQuery('${s.replace(/'/g, "\\'")}')" class="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold border border-indigo-200 px-3 py-1 rounded-full transition shadow-2xs">
                 ${s}
               </button>
             `).join('')}
@@ -661,14 +647,14 @@
       let leadHtml = '';
       if (showLeadForm) {
         leadHtml = `
-          <div class="mt-3 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 w-full flex flex-col gap-2">
-            <h5 class="text-xs font-bold text-emerald-400">¿Deseas que un asesor se comunique contigo?</h5>
-            <p class="text-[11px] text-slate-300">Deja tu nombre y contacto para darte seguimiento prioritario:</p>
+          <div class="mt-3 p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 w-full flex flex-col gap-2 shadow-sm">
+            <h5 class="text-xs font-bold text-emerald-800">¿Deseas que un asesor se comunique contigo?</h5>
+            <p class="text-[11px] text-slate-600">Deja tu nombre y contacto para darte seguimiento prioritario:</p>
             <div class="flex flex-col sm:flex-row gap-2 mt-1">
-              <input type="text" id="quickLeadName" placeholder="Tu nombre..." class="flex-1 bg-slate-900 border border-slate-700 text-xs px-2.5 py-1.5 rounded-lg text-white">
-              <input type="text" id="quickLeadPhone" placeholder="Teléfono o WhatsApp..." class="flex-1 bg-slate-900 border border-slate-700 text-xs px-2.5 py-1.5 rounded-lg text-white">
+              <input type="text" id="quickLeadName" placeholder="Tu nombre completo..." class="flex-1 bg-white border border-slate-300 text-xs px-3 py-2 rounded-lg text-slate-800 focus:outline-none focus:border-emerald-500">
+              <input type="text" id="quickLeadPhone" placeholder="Teléfono o WhatsApp..." class="flex-1 bg-white border border-slate-300 text-xs px-3 py-2 rounded-lg text-slate-800 focus:outline-none focus:border-emerald-500">
             </div>
-            <button onclick="submitLead()" class="mt-1 w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition shadow-sm">
+            <button onclick="submitLead()" class="mt-1 w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition shadow-md shadow-emerald-600/20">
               Enviar Datos de Contacto
             </button>
           </div>
@@ -676,8 +662,8 @@
       }
 
       msgDiv.innerHTML = `
-        <span class="text-[10px] text-slate-400 font-medium">${currentBusiness ? currentBusiness.nombre : 'Asistente'}</span>
-        <div class="bg-slate-800/90 border border-slate-700/60 text-slate-100 rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed shadow-sm">
+        <span class="text-[10px] text-slate-500 font-bold">${currentBusiness ? currentBusiness.nombre : 'Asistente'}</span>
+        <div class="bg-white border border-slate-200 text-slate-800 rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed shadow-sm">
           ${formatted}
           ${suggestionsHtml}
           ${leadHtml}
@@ -695,8 +681,8 @@
       msgDiv.className = 'flex flex-col items-end gap-1 max-w-[85%] self-end ml-auto';
 
       msgDiv.innerHTML = `
-        <span class="text-[10px] text-slate-400 font-medium">Tú</span>
-        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm leading-relaxed shadow-md shadow-indigo-600/20">
+        <span class="text-[10px] text-slate-500 font-bold">Tú</span>
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm leading-relaxed shadow-md shadow-indigo-600/20 font-medium">
           ${text}
         </div>
       `;
@@ -747,7 +733,7 @@
       } catch (err) {
         typing.classList.add('hidden');
         typing.classList.remove('flex');
-        addBotMessage('Error conectando con el motor.');
+        addBotMessage('Error conectando con el servidor de chat.');
       }
     }
 
@@ -795,14 +781,14 @@
           const waLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${lead.nombre}, te contactamos desde ${lead.projectId} por tu consulta reciente.`)}`;
 
           return `
-            <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between gap-2.5 hover:border-slate-700 transition">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2.5 hover:border-slate-300 transition shadow-2xs">
               <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white font-bold text-xs flex items-center justify-center shrink-0">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
                   ${lead.nombre.substring(0, 1).toUpperCase()}
                 </div>
                 <div>
-                  <h5 class="text-xs font-bold text-white leading-snug">${lead.nombre}</h5>
-                  <span class="text-[11px] text-slate-400 font-mono">${lead.contacto}</span>
+                  <h5 class="text-xs font-bold text-slate-900 leading-snug">${lead.nombre}</h5>
+                  <span class="text-[11px] text-slate-500 font-mono">${lead.contacto}</span>
                 </div>
               </div>
 
