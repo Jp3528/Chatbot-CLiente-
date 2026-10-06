@@ -1,5 +1,13 @@
 [
   {
+    "id": "LEAD-MUVYVEI4",
+    "fecha": "2026-10-06T00:55:03.724Z",
+    "projectId": "premium-home",
+    "nombre": "Test User",
+    "contacto": "+51 900 111 222",
+    "interes": "Prueba unitaria automatizada"
+  },
+  {
     "id": "LEAD-001",
     "fecha": "2026-10-05T14:30:00.000Z",
     "projectId": "premium-home",

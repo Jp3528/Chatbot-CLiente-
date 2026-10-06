@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node --watch server.mjs",
-    "test": "node --test test/api.test.mjs"
+    "test": "node --test test/api.test.mjs",
+    "preview": "node screenshot.mjs"
   },
   "keywords": [
     "chatbot",
@@ -29,5 +30,8 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "openai": "^6.39.0"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.12.0"
   }
 }
