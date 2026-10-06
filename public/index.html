@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NexusChat API — Plataforma B2B de Asistentes Virtuales & Captura de Leads</title>
-  <meta name="description" content="Plataforma comercial de chatbots inteligentes multi-negocio con catálogo, captura de clientes potenciales y conexión directa con WhatsApp.">
+  <title>NexusChat — Plataforma de Asistentes Virtuales & Captura de Clientes</title>
+  <meta name="description" content="Plataforma comercial de chatbots inteligentes para empresas con catálogo de productos, captura automática de prospectos y conexión directa a WhatsApp.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M8 12 Q16 4 24 12 Q24 24 8 20 Z' fill='%23ffffff'/%3E%3Ccircle cx='12' cy='14' r='2' fill='%234f46e5'/%3E%3Ccircle cx='20' cy='14' r='2' fill='%234f46e5'/%3E%3C/svg%3E">
   
-  <!-- Tipografía Moderna Inter -->
+  <!-- Tipografía Moderna Plus Jakarta Sans e Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN Oficial -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,6 @@
         extend: {
           fontFamily: {
             sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
-            mono: ['JetBrains Mono', 'ui-monospace', 'monospace']
           },
           colors: {
             brand: {
@@ -44,23 +43,29 @@
   <style>
     body {
       font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-      background-color: #f8fafc;
       color: #0f172a;
     }
 
-    /* Fondo degradado suave comercial y vibrante */
-    .saas-bg {
-      background: radial-gradient(1200px circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, rgba(244, 114, 182, 0.04) 40%, #f8fafc 80%);
+    /* Fondo Luminoso con Degradado Vibrante y Cálido (Cero Estilo Hacker) */
+    .vibrant-canvas {
+      background-color: #f8fafc;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.10) 0px, transparent 50%),
+        radial-gradient(at 50% 40%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.10) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(245, 158, 11, 0.09) 0px, transparent 50%);
       min-height: 100vh;
     }
 
-    /* Scrollbars modernos */
+    /* Scrollbars suaves y limpios */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: #f1f5f9;
+      border-radius: 999px;
     }
     ::-webkit-scrollbar-thumb {
       background: #cbd5e1;
@@ -70,7 +75,7 @@
       background: #94a3b8;
     }
 
-    /* Animación de puntos de escritura */
+    /* Puntos animados de redacción */
     .typing-dot {
       animation: typingBounce 1.4s infinite ease-in-out both;
     }
@@ -82,134 +87,147 @@
     }
   </style>
 </head>
-<body class="saas-bg flex flex-col min-h-screen selection:bg-indigo-500 selection:text-white">
+<body class="vibrant-canvas flex flex-col min-h-screen selection:bg-indigo-500 selection:text-white">
 
-  <!-- Header Superior Estilo Intercom / Stripe -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+  <!-- Cinta Superior con Paleta Viva de Colores -->
+  <div class="h-1.5 w-full bg-gradient-to-r from-indigo-500 via-purple-500 via-pink-500 to-emerald-400"></div>
+
+  <!-- Header Comercial Principal -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
       
-      <!-- Logo y Branding -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-600 shadow-md shadow-indigo-500/25 flex items-center justify-center text-white font-extrabold text-lg">
+      <!-- Logo de Marca y Título Comercial -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 shadow-md shadow-indigo-500/25 flex items-center justify-center text-white font-black text-xl">
           N
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <span class="font-extrabold text-slate-900 text-base tracking-tight">NexusChat API</span>
-            <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Plataforma B2B</span>
+            <span class="font-extrabold text-slate-900 text-lg tracking-tight">NexusChat</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Plataforma Comercial</span>
           </div>
-          <p class="text-xs text-slate-500 hidden sm:block">Asistentes Virtuales con Catálogo & Captura de Prospectos</p>
+          <p class="text-xs text-slate-500 font-medium hidden sm:block">Asistentes Virtuales de Ventas & Captura de Prospectos por WhatsApp</p>
         </div>
       </div>
 
-      <!-- Estado en vivo comercial -->
-      <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>Servidor Activo · 0ms Latencia (Motor Semántico Local)</span>
+      <!-- Badge de Estado Comercial Activo -->
+      <div class="hidden md:flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold shadow-xs">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Atención 24/7 Activa · Cierre de Ventas por WhatsApp</span>
       </div>
 
-      <!-- Acciones de Cabecera -->
+      <!-- Botones de Acción -->
       <div class="flex items-center gap-2.5">
-        <button onclick="openGuideModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-700 hover:text-indigo-600 bg-slate-100 hover:bg-slate-200/80 rounded-xl transition shadow-xs">
-          ¿Cómo Funciona?
+        <button onclick="openGuideModal()" class="px-4 py-2 text-xs font-bold text-slate-700 hover:text-indigo-600 bg-slate-100 hover:bg-slate-200/80 rounded-xl transition shadow-xs flex items-center gap-1.5">
+          <span>¿Cómo Funciona?</span>
         </button>
-        <button onclick="exportLeadsCSV()" class="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition shadow-md shadow-indigo-600/20 flex items-center gap-1.5">
-          <span>Exportar Leads CSV</span>
+        <button onclick="exportLeadsCSV()" class="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-xl transition shadow-md shadow-emerald-600/20 flex items-center gap-1.5">
+          <span>Exportar Leads (Excel/CSV)</span>
         </button>
       </div>
 
     </div>
   </header>
 
-  <!-- Métricas Comerciales Principales (Cards Luminosas y Vivas) -->
+  <!-- Tarjetas de Métricas Comerciales con Colores Vivos -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 w-full">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
       
-      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-indigo-600">
-        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Empresas Conectadas</span>
-        <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-slate-900" id="kpiTenants">4</span>
-          <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md">Multi-Inquilino</span>
+      <!-- Métrica 1: Negocios Activos (Índigo) -->
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-indigo-600 flex flex-col justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Negocios Vinculados</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span class="text-3xl font-black text-slate-900" id="kpiTenants">4</span>
+          <span class="text-xs font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-full">Multi-Negocio</span>
         </div>
+        <span class="text-[11px] text-slate-500 mt-1 font-medium">Inmobiliaria, Restaurante, Dental, Retail</span>
       </div>
 
-      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-emerald-500">
-        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Consultas Procesadas</span>
-        <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-slate-900">1,428</span>
-          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">99.8% Automatizadas</span>
+      <!-- Métrica 2: Consultas Resueltas (Esmeralda) -->
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-emerald-500 flex flex-col justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Consultas Automatizadas</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span class="text-3xl font-black text-slate-900">1,428</span>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">99.8% Éxito</span>
         </div>
+        <span class="text-[11px] text-slate-500 mt-1 font-medium">Respuestas inmediatas sin esperas</span>
       </div>
 
-      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-purple-600">
-        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Leads en CRM</span>
-        <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-emerald-600" id="kpiLeadsCount">1</span>
-          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">Capturados en Chat</span>
+      <!-- Métrica 3: Clientes en CRM (Rosa/Fucsia) -->
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-rose-500 flex flex-col justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Prospectos Capturados</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span class="text-3xl font-black text-rose-600" id="kpiLeadsCount">2</span>
+          <span class="text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-full">En Bandeja CRM</span>
         </div>
+        <span class="text-[11px] text-slate-500 mt-1 font-medium">Nombre y WhatsApp verificados</span>
       </div>
 
-      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-sky-500">
-        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Velocidad de Respuesta</span>
-        <div class="flex items-baseline gap-2">
-          <span class="text-2xl sm:text-3xl font-extrabold text-slate-900">&lt; 0.05s</span>
-          <span class="text-xs font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md">Cero Costo de API</span>
+      <!-- Métrica 4: Contacto WhatsApp (Ámbar/Naranja) -->
+      <div class="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition border-l-4 border-l-amber-500 flex flex-col justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Canal WhatsApp</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span class="text-3xl font-black text-amber-600">1 Clic</span>
+          <span class="text-xs font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-full">Traspaso Inmediato</span>
         </div>
+        <span class="text-[11px] text-slate-500 mt-1 font-medium">Cierre comercial con tu equipo</span>
       </div>
 
     </div>
   </section>
 
-  <!-- Contenedor Principal: 3 Columnas Dinámicas -->
+  <!-- Área Principal: 3 Columnas Comerciales -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-    <!-- COLUMNA 1: Selector de Empresas & Catálogo de Productos (Col 1 a 4) -->
+    <!-- COLUMNA 1: Selector de Empresas & Catálogo Comercial (Col 1 a 4) -->
     <div class="lg:col-span-4 flex flex-col gap-5">
       
-      <!-- Panel de Negocios Disponibles -->
-      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
-        <div class="p-4 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+      <!-- Lista de Empresas Disponibles -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
+        <div class="p-4 bg-gradient-to-r from-slate-50 to-indigo-50/50 border-b border-slate-200 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Negocios Vinculados</h2>
+            <span class="w-3 h-3 rounded-full bg-indigo-600 shadow-xs"></span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Empresas & Negocios</h2>
           </div>
-          <span class="text-xs text-slate-500 font-semibold">4 Disponibles</span>
+          <span class="text-xs text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-full font-bold">4 Disponibles</span>
         </div>
 
-        <div class="p-3 flex flex-col gap-2" id="businessList">
-          <!-- Tarjetas de negocios se cargan dinámicamente -->
+        <div class="p-3.5 flex flex-col gap-2.5" id="businessList">
+          <!-- Cargado dinámicamente -->
         </div>
       </div>
 
-      <!-- Ficha del Negocio Activo + Pestañas de Catálogo / FAQ -->
-      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+      <!-- Ficha del Negocio Seleccionado con Catálogo y Precios -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
         
-        <!-- Cabecera de la empresa seleccionada -->
-        <div class="p-4 bg-gradient-to-r from-slate-50 to-indigo-50/40 border-b border-slate-200">
+        <!-- Cabecera de la Empresa Activa con Color Temático -->
+        <div class="p-5 border-b border-slate-200 transition-colors" id="activeBizHeaderBox">
           <div class="flex items-start justify-between gap-2">
             <div>
-              <h3 class="text-base font-extrabold text-slate-900 tracking-tight" id="activeBizName">Premium Home Inmobiliaria</h3>
+              <h3 class="text-lg font-black text-slate-900 tracking-tight" id="activeBizName">Premium Home Inmobiliaria</h3>
               <span class="inline-block mt-0.5 text-xs font-bold text-indigo-600" id="activeBizCategory">Inmobiliaria & Bienes Raíces</span>
             </div>
-            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">Activo</span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+              Operativo
+            </span>
           </div>
-          <p class="text-xs text-slate-600 mt-2 leading-relaxed" id="activeBizDesc">Cargando información del negocio...</p>
+          <p class="text-xs text-slate-600 mt-2.5 leading-relaxed" id="activeBizDesc">Cargando información del negocio...</p>
           
-          <div class="mt-3 pt-3 border-t border-slate-200/80 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 font-medium">
+          <div class="mt-3.5 pt-3.5 border-t border-slate-200/80 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 font-semibold">
             <span id="activeBizPhone">Tel: +51 987 654 321</span>
             <span id="activeBizSchedule">Horario: Lun-Sáb 9am-7pm</span>
           </div>
         </div>
 
-        <!-- Pestañas de Navegación del Conocimiento -->
-        <div class="flex border-b border-slate-200 bg-slate-50 px-2 pt-2 gap-1 text-xs">
-          <button onclick="switchTab('catalog')" id="tabBtnCatalog" class="px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition">
+        <!-- Pestañas de Conocimiento del Asistente -->
+        <div class="flex border-b border-slate-200 bg-slate-50/80 px-3 pt-2 gap-2 text-xs">
+          <button onclick="switchTab('catalog')" id="tabBtnCatalog" class="px-3 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition">
             Catálogo & Precios
           </button>
-          <button onclick="switchTab('faqs')" id="tabBtnFaqs" class="px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition">
-            Preguntas (FAQs)
+          <button onclick="switchTab('faqs')" id="tabBtnFaqs" class="px-3 py-2 font-semibold text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition">
+            Preguntas Frecuentes
           </button>
-          <button onclick="switchTab('rules')" id="tabBtnRules" class="px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition">
+          <button onclick="switchTab('rules')" id="tabBtnRules" class="px-3 py-2 font-semibold text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition">
             Políticas
           </button>
         </div>
@@ -218,16 +236,16 @@
         <div class="p-4 max-h-[380px] overflow-y-auto">
           
           <!-- Tab 1: Catálogo con Precios Vivos -->
-          <div id="tabCatalog" class="flex flex-col gap-2.5">
-            <!-- Se llena dinámicamente con productos y precios -->
-          </div>
-
-          <!-- Tab 2: FAQs Acordeón -->
-          <div id="tabFaqs" class="hidden flex-col gap-2">
+          <div id="tabCatalog" class="flex flex-col gap-3">
             <!-- Se llena dinámicamente -->
           </div>
 
-          <!-- Tab 3: Políticas -->
+          <!-- Tab 2: Preguntas Frecuentes -->
+          <div id="tabFaqs" class="hidden flex-col gap-2.5">
+            <!-- Se llena dinámicamente -->
+          </div>
+
+          <!-- Tab 3: Políticas del Negocio -->
           <div id="tabRules" class="hidden flex-col gap-2">
             <ul id="rulesList" class="space-y-2 text-xs text-slate-700"></ul>
           </div>
@@ -238,115 +256,125 @@
 
     </div>
 
-    <!-- COLUMNA 2: Simulador Interactivo del Cliente (Col 5 a 8) -->
-    <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden flex flex-col h-[740px]">
+    <!-- COLUMNA 2: Simulador de Atención Comercial en Vivo (Col 5 a 8) -->
+    <div class="lg:col-span-5 bg-white rounded-3xl border border-slate-200/80 shadow-lg overflow-hidden flex flex-col h-[740px]">
       
-      <!-- Barra Superior tipo Ventana Navegador -->
-      <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex items-center justify-between gap-3">
-        <div class="flex items-center gap-1.5">
-          <span class="w-3 h-3 rounded-full bg-rose-400"></span>
-          <span class="w-3 h-3 rounded-full bg-amber-400"></span>
-          <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-        </div>
-        <div class="flex-1 bg-white border border-slate-200 rounded-md px-3 py-1 text-center font-mono text-[11px] text-slate-600 truncate shadow-2xs" id="simBrowserUrl">
-          https://chat.asistente.cloud/v2/premium-home
-        </div>
-        <span class="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200" id="engineBadge">
-          Local NLP (0ms)
-        </span>
-      </div>
-
-      <!-- Cabecera del Asistente en el Chat (Estilo Intercom) -->
-      <div class="p-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between gap-3 shadow-xs">
+      <!-- Cabecera del Asistente (Diseño Real de Chat Comercial con Colores Vivos) -->
+      <div class="p-4 text-white flex items-center justify-between gap-3 shadow-sm transition-colors" id="chatHeaderBar" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-white text-indigo-600 flex items-center justify-center font-black text-sm shadow-sm" id="chatAvatar">
+          <div class="w-10 h-10 rounded-2xl bg-white text-indigo-700 flex items-center justify-center font-black text-sm shadow-md" id="chatAvatar">
             PH
           </div>
           <div>
-            <h4 class="text-sm font-bold text-white leading-tight" id="chatTitle">Premium Home Inmobiliaria</h4>
+            <h4 class="text-sm font-extrabold text-white leading-tight" id="chatTitle">Premium Home Inmobiliaria</h4>
             <div class="flex items-center gap-1.5 text-xs text-emerald-200 mt-0.5 font-medium">
               <span class="w-2 h-2 rounded-full bg-emerald-300"></span>
-              <span>Asistente virtual en línea</span>
+              <span>Asistente Oficial · En línea ahora</span>
             </div>
           </div>
         </div>
 
-        <button onclick="resetChat()" class="text-xs text-white/90 hover:text-white px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 transition font-semibold">
-          Reiniciar
+        <button onclick="resetChat()" class="text-xs text-white/95 hover:text-white px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 transition font-bold shadow-xs">
+          Reiniciar Chat
         </button>
       </div>
 
-      <!-- Área de Mensajes -->
-      <div class="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50/70" id="chatMessages">
+      <!-- Área de Conversación -->
+      <div class="flex-1 p-4.5 overflow-y-auto space-y-4 bg-gradient-to-b from-slate-50/80 to-indigo-50/20" id="chatMessages">
         <!-- Burbujas del chat inyectadas dinámicamente -->
       </div>
 
-      <!-- Indicador de Escritura -->
-      <div id="typingBox" class="hidden px-4 py-2 bg-slate-100/90 items-center gap-1.5 text-xs text-slate-500 border-t border-slate-200">
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 typing-dot"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 typing-dot"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 typing-dot"></span>
-        <span class="ml-1 text-[11px] font-medium text-slate-600">Asistente redactando respuesta...</span>
+      <!-- Indicador de Redacción -->
+      <div id="typingBox" class="hidden px-5 py-2.5 bg-slate-100/90 items-center gap-2 text-xs text-slate-600 border-t border-slate-200">
+        <span class="w-2 h-2 rounded-full bg-indigo-600 typing-dot"></span>
+        <span class="w-2 h-2 rounded-full bg-indigo-600 typing-dot"></span>
+        <span class="w-2 h-2 rounded-full bg-indigo-600 typing-dot"></span>
+        <span class="ml-1 text-xs font-semibold text-slate-700">El asistente está respondiendo...</span>
       </div>
 
-      <!-- Barra de Entrada Inferior -->
-      <div class="p-3.5 bg-white border-t border-slate-200">
-        <form onsubmit="event.preventDefault(); handleSend();" class="flex gap-2">
-          <input type="text" id="chatInput" placeholder="Escribe tu consulta (ej. ¿cuánto cuesta?, ¿tienen piscina?, ¿horarios?)..." class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition" autocomplete="off">
-          <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-sm shadow-md shadow-indigo-600/20 transition flex items-center justify-center">
+      <!-- Barra de Entrada de Mensajes -->
+      <div class="p-4 bg-white border-t border-slate-200">
+        <form onsubmit="event.preventDefault(); handleSend();" class="flex gap-2.5">
+          <input type="text" id="chatInput" placeholder="Escribe tu consulta (ej. ¿cuánto cuesta?, ¿tienen piscina?, ¿horarios?)..." class="flex-1 bg-slate-50 border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition" autocomplete="off">
+          <button type="submit" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-extrabold text-sm shadow-md shadow-indigo-600/25 transition flex items-center justify-center">
             <span>Enviar</span>
           </button>
         </form>
         <div class="mt-2 text-[11px] text-slate-500 flex justify-between items-center">
           <span>Presiona Enter ↵ para enviar</span>
-          <span class="text-slate-600 font-medium" id="latencyIndicator">0ms latencia</span>
+          <span class="text-indigo-600 font-semibold">Respuesta inmediata con catálogo oficial</span>
         </div>
       </div>
 
     </div>
 
-    <!-- COLUMNA 3: CRM de Prospectos & Integración Web (Col 9 a 12) -->
+    <!-- COLUMNA 3: CRM de Prospectos & Valor Comercial (Col 9 a 12) -->
     <div class="lg:col-span-3 flex flex-col gap-5">
       
-      <!-- CRM de Leads en Vivo -->
-      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
-        <div class="p-4 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+      <!-- Bandeja CRM de Prospectos en Tiempo Real -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
+        <div class="p-4 bg-gradient-to-r from-slate-50 to-emerald-50/50 border-b border-slate-200 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Bandeja de Leads (CRM)</h2>
+            <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-xs"></span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-800">Prospectos (CRM)</h2>
           </div>
-          <button onclick="loadLeads()" class="text-xs text-indigo-600 hover:text-indigo-700 font-bold">Refrescar</button>
+          <button onclick="loadLeads()" class="text-xs text-indigo-600 hover:text-indigo-800 font-bold transition">Actualizar</button>
         </div>
 
-        <div class="p-3.5">
-          <div class="flex items-center justify-between text-xs text-slate-500 mb-2.5">
-            <span class="font-medium">Prospectos capturados:</span>
-            <span class="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded" id="leadsBadge">1 contacto</span>
+        <div class="p-4">
+          <div class="flex items-center justify-between text-xs text-slate-600 mb-3">
+            <span class="font-medium">Clientes interesados capturados:</span>
+            <span class="font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full" id="leadsBadge">2 contactos</span>
           </div>
 
           <!-- Lista de Prospectos -->
-          <div class="flex flex-col gap-2.5 max-h-[220px] overflow-y-auto" id="leadsListContainer">
+          <div class="flex flex-col gap-3 max-h-[260px] overflow-y-auto" id="leadsListContainer">
             <!-- Items de leads -->
           </div>
         </div>
       </div>
 
-      <!-- Generador de Código para Clientes -->
-      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4.5 flex flex-col gap-3">
+      <!-- Panel de Beneficios Comerciales -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-5 flex flex-col gap-3.5">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Impacto en Tus Ventas</h3>
+        </div>
+
+        <div class="space-y-3">
+          <div class="p-3 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex flex-col gap-1">
+            <strong class="text-xs font-bold text-indigo-950">1. Captura Automática</strong>
+            <p class="text-[11px] text-slate-600 leading-relaxed">El asistente detecta cuando el visitante quiere cotizar o agendar y pide amablemente su nombre y WhatsApp.</p>
+          </div>
+
+          <div class="p-3 rounded-2xl bg-emerald-50/70 border border-emerald-100 flex flex-col gap-1">
+            <strong class="text-xs font-bold text-emerald-950">2. Atención Inmediata 24/7</strong>
+            <p class="text-[11px] text-slate-600 leading-relaxed">Responde dudas de precios, catálogos y horarios al instante, evitando que los clientes se vayan a la competencia.</p>
+          </div>
+
+          <div class="p-3 rounded-2xl bg-amber-50/70 border border-amber-100 flex flex-col gap-1">
+            <strong class="text-xs font-bold text-amber-950">3. Cierre en WhatsApp</strong>
+            <p class="text-[11px] text-slate-600 leading-relaxed">Con 1 solo clic en el botón verde, tu asesor abre la conversación directa en WhatsApp para cerrar el trato.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Integración Web Amigable -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-5 flex flex-col gap-3">
         <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Incrustar en Cualquier Web</h3>
-          <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">1 Línea</span>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Instalar en Tu Web</h3>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200">1 Paso</span>
         </div>
         <p class="text-xs text-slate-600 leading-relaxed">
-          Pega esta etiqueta antes de <code class="text-indigo-600 font-mono font-bold">&lt;/body&gt;</code> en tu web para activar el chat flotante:
+          Copia esta etiqueta y pégala en cualquier página web para activar el asistente flotante:
         </p>
 
-        <!-- Bloque de Código Luminoso -->
-        <div class="bg-slate-100 p-3 rounded-xl border border-slate-200/80 font-mono text-xs text-indigo-700 break-all select-all leading-relaxed shadow-inner" id="codeSnippetBox">
+        <!-- Bloque de Código Limpio -->
+        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 text-xs text-indigo-900 break-all select-all leading-relaxed font-semibold shadow-inner" id="codeSnippetBox">
           &lt;script src="https://dominio.com/widget.js" data-project="premium-home"&gt;&lt;/script&gt;
         </div>
 
-        <!-- Paleta de Colores Vivos para el Widget -->
+        <!-- Paleta de Colores Vivos para Personalizar el Widget -->
         <div class="flex items-center justify-between gap-2 pt-1">
           <div class="flex items-center gap-1.5">
             <span class="text-xs text-slate-600 font-bold mr-1">Color:</span>
@@ -356,19 +384,10 @@
             <button onclick="setWidgetColor('#6366f1')" class="w-5 h-5 rounded-md bg-[#6366f1] border border-black/10 hover:scale-110 transition shadow-2xs" title="Indigo"></button>
             <button onclick="setWidgetColor('#ec4899')" class="w-5 h-5 rounded-md bg-[#ec4899] border border-black/10 hover:scale-110 transition shadow-2xs" title="Rosa"></button>
           </div>
-          <button onclick="copySnippet()" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white transition flex items-center gap-1 shadow-xs">
-            <span>Copiar</span>
+          <button onclick="copySnippet()" class="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white transition flex items-center gap-1 shadow-xs">
+            <span>Copiar Código</span>
           </button>
         </div>
-      </div>
-
-      <!-- Telemetría JSON de la API (Luminosa y Legible) -->
-      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-800">Telemetría de Respuesta</span>
-          <span class="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">HTTP 200</span>
-        </div>
-        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-800 max-h-[140px] overflow-y-auto whitespace-pre leading-relaxed shadow-inner" id="telemetryBox">// Haz una consulta en el chat para inspeccionar el payload de /api/chat...</div>
       </div>
 
     </div>
@@ -377,45 +396,45 @@
 
   <!-- Modal Explicativo: Cómo Funciona el Producto -->
   <div id="guideModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
-    <div class="bg-white border border-slate-200 max-w-lg w-full rounded-2xl p-6 shadow-2xl flex flex-col gap-4">
+    <div class="bg-white border border-slate-200 max-w-lg w-full rounded-3xl p-6 sm:p-7 shadow-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold text-slate-900 tracking-tight">¿Cómo Funciona NexusChat API?</h3>
-        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-700 text-lg">✕</button>
+        <h3 class="text-lg font-black text-slate-900 tracking-tight">¿Cómo Funciona NexusChat?</h3>
+        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">✕</button>
       </div>
 
       <div class="space-y-3 text-sm text-slate-700 leading-relaxed">
-        <div class="p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
-          <strong class="text-slate-900 block mb-0.5">1. Plataforma Multi-Empresa</strong>
-          <p class="text-xs text-slate-600">Cada negocio (inmobiliaria, restaurante, clínica dental, tienda) tiene su propio catálogo de productos, precios y preguntas frecuentes aislado.</p>
+        <div class="p-3.5 rounded-2xl bg-indigo-50/70 border border-indigo-100">
+          <strong class="text-slate-900 block mb-0.5 font-bold">1. Multi-Empresa con Catálogos Independientes</strong>
+          <p class="text-xs text-slate-600">Cada negocio (inmobiliaria, restaurante, clínica dental, tienda) cuenta con sus propios productos, precios, horarios y políticas aislados.</p>
         </div>
 
-        <div class="p-3 rounded-xl bg-emerald-50/60 border border-emerald-100">
-          <strong class="text-slate-900 block mb-0.5">2. Captura Automática de Prospectos (Leads)</strong>
-          <p class="text-xs text-slate-600">Cuando un cliente muestra interés real en comprar o agendar, el asistente le pide su nombre y WhatsApp. El lead se guarda al instante en la bandeja CRM.</p>
+        <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+          <strong class="text-slate-900 block mb-0.5 font-bold">2. Captura Automática de Clientes Potenciales</strong>
+          <p class="text-xs text-slate-600">Cuando el cliente consulta por precios o muestra interés en comprar, el asistente solicita su nombre y teléfono, registrándolo de inmediato en la bandeja CRM.</p>
         </div>
 
-        <div class="p-3 rounded-xl bg-purple-50/60 border border-purple-100">
-          <strong class="text-slate-900 block mb-0.5">3. Conexión Directa con WhatsApp</strong>
-          <p class="text-xs text-slate-600">Al hacer clic en el botón verde de WhatsApp del prospecto, el asesor de ventas inicia la conversación en 1 clic con el cliente ya interesado.</p>
+        <div class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-100">
+          <strong class="text-slate-900 block mb-0.5 font-bold">3. Traspaso en 1 Clic a WhatsApp</strong>
+          <p class="text-xs text-slate-600">Al pulsar el botón verde de WhatsApp del cliente, se abre WhatsApp con un mensaje pre-armado y listo para cerrar la venta.</p>
         </div>
 
-        <div class="p-3 rounded-xl bg-sky-50/60 border border-sky-100">
-          <strong class="text-slate-900 block mb-0.5">4. Fácil de Vender e Instalar</strong>
-          <p class="text-xs text-slate-600">A tu cliente solo le entregas 1 línea de código <code class="text-indigo-600 font-mono font-bold">&lt;script&gt;</code> para que lo pegue en su página web y tenga el chatbot funcionando.</p>
+        <div class="p-3.5 rounded-2xl bg-purple-50/70 border border-purple-100">
+          <strong class="text-slate-900 block mb-0.5 font-bold">4. Listo para Vender a Clientes</strong>
+          <p class="text-xs text-slate-600">Entregas el chatbot a cualquier empresa con solo 1 línea de código o mediante enlace directo.</p>
         </div>
       </div>
 
       <div class="flex justify-end pt-2">
-        <button onclick="closeGuideModal()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition shadow-sm">
+        <button onclick="closeGuideModal()" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs rounded-xl transition shadow-sm">
           Entendido
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Toast Flotante -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4.5 py-3 rounded-xl shadow-xl text-xs font-semibold transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2">
-    <span id="toastIcon" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+  <!-- Notificación Toast Flotante -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl text-xs font-bold transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2.5">
+    <span id="toastIcon" class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
     <span id="toastMsg">Mensaje de notificación</span>
   </div>
 
@@ -428,18 +447,43 @@
     let widgetSelectedColor = '#0f766e';
     let leadsCache = [];
 
-    const BUSINESS_COLORS = {
-      'premium-home': { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-700', badge: 'bg-emerald-600' },
-      'la-esquina': { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-700', badge: 'bg-orange-500' },
-      'sonrisa-dental': { bg: 'bg-sky-50', border: 'border-sky-200', text: 'text-sky-700', badge: 'bg-sky-500' },
-      'nexus-tech': { bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-700', badge: 'bg-purple-600' }
-    };
-
-    const MONOGRAMS = {
-      'premium-home': 'PH',
-      'la-esquina': 'LE',
-      'sonrisa-dental': 'SD',
-      'nexus-tech': 'NT'
+    const BUSINESS_THEMES = {
+      'premium-home': {
+        name: 'Premium Home Inmobiliaria',
+        gradient: 'linear-gradient(135deg, #059669 0%, #0d9488 100%)',
+        activeBtnBg: 'bg-emerald-50 border-emerald-500 shadow-sm',
+        badgeBg: 'bg-emerald-600',
+        textColor: 'text-emerald-700',
+        headerBoxBg: 'bg-emerald-50/40',
+        mono: 'PH'
+      },
+      'la-esquina': {
+        name: 'La Esquina Fast Food',
+        gradient: 'linear-gradient(135deg, #ea580c 0%, #f97316 100%)',
+        activeBtnBg: 'bg-orange-50 border-orange-500 shadow-sm',
+        badgeBg: 'bg-orange-500',
+        textColor: 'text-orange-700',
+        headerBoxBg: 'bg-orange-50/40',
+        mono: 'LE'
+      },
+      'sonrisa-dental': {
+        name: 'Sonrisa Perfecta Dental',
+        gradient: 'linear-gradient(135deg, #0284c7 0%, #2563eb 100%)',
+        activeBtnBg: 'bg-sky-50 border-sky-500 shadow-sm',
+        badgeBg: 'bg-sky-500',
+        textColor: 'text-sky-700',
+        headerBoxBg: 'bg-sky-50/40',
+        mono: 'SD'
+      },
+      'nexus-tech': {
+        name: 'Nexus Tech Store',
+        gradient: 'linear-gradient(135deg, #7c3aed 0%, #6366f1 100%)',
+        activeBtnBg: 'bg-purple-50 border-purple-500 shadow-sm',
+        badgeBg: 'bg-purple-600',
+        textColor: 'text-purple-700',
+        headerBoxBg: 'bg-purple-50/40',
+        mono: 'NT'
+      }
     };
 
     async function init() {
@@ -464,22 +508,25 @@
         const container = document.getElementById('businessList');
         
         container.innerHTML = data.negocios.map(b => {
-          const mono = MONOGRAMS[b.id] || b.nombre.substring(0, 2).toUpperCase();
-          const colors = BUSINESS_COLORS[b.id] || { bg: 'bg-indigo-50', border: 'border-indigo-200', text: 'text-indigo-700', badge: 'bg-indigo-600' };
+          const theme = BUSINESS_THEMES[b.id] || {
+            badgeBg: 'bg-indigo-600',
+            activeBtnBg: 'bg-indigo-50 border-indigo-500',
+            mono: b.nombre.substring(0, 2).toUpperCase()
+          };
           const isActive = b.id === activeProjectId;
 
           return `
-            <button onclick="selectBusiness('${b.id}')" id="biz-btn-${b.id}" class="w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between gap-3 ${isActive ? 'bg-indigo-50 border-indigo-500 shadow-sm' : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/60'}">
+            <button onclick="selectBusiness('${b.id}')" id="biz-btn-${b.id}" class="w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 ${isActive ? theme.activeBtnBg : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/60'}">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs text-white ${colors.badge} shadow-xs">
-                  ${mono}
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs text-white ${theme.badgeBg} shadow-sm">
+                  ${theme.mono}
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-slate-900 tracking-tight leading-snug">${b.nombre}</h4>
+                  <h4 class="text-xs font-extrabold text-slate-900 tracking-tight leading-snug">${b.nombre}</h4>
                   <span class="text-[11px] text-slate-500 font-medium">${b.categoria}</span>
                 </div>
               </div>
-              <span class="w-2.5 h-2.5 rounded-full ${isActive ? 'bg-emerald-500 ring-2 ring-emerald-200' : 'bg-slate-300'}"></span>
+              <span class="w-2.5 h-2.5 rounded-full ${isActive ? 'bg-emerald-500 ring-4 ring-emerald-100' : 'bg-slate-300'}"></span>
             </button>
           `;
         }).join('');
@@ -492,12 +539,24 @@
 
     async function selectBusiness(id) {
       activeProjectId = id;
+      const theme = BUSINESS_THEMES[id] || {
+        gradient: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+        activeBtnBg: 'bg-indigo-50 border-indigo-500 shadow-sm',
+        headerBoxBg: 'bg-indigo-50/40',
+        mono: id.substring(0, 2).toUpperCase()
+      };
+
       document.querySelectorAll('#businessList button').forEach(b => {
-        b.className = b.className.replace(/bg-indigo-50 border-indigo-500 shadow-sm/g, 'bg-slate-50 border-slate-200');
+        b.className = 'w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/60';
+        const dot = b.querySelector('span:last-child');
+        if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-300';
       });
+
       const activeBtn = document.getElementById(`biz-btn-${id}`);
       if (activeBtn) {
-        activeBtn.className = activeBtn.className.replace('bg-slate-50 border-slate-200', 'bg-indigo-50 border-indigo-500 shadow-sm');
+        activeBtn.className = `w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 ${theme.activeBtnBg}`;
+        const dot = activeBtn.querySelector('span:last-child');
+        if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100';
       }
 
       try {
@@ -508,25 +567,28 @@
 
         widgetSelectedColor = currentBusiness.color || '#6366f1';
 
-        // Actualizar Cabecera de Columna 1
+        // Actualizar Cabecera de Empresa
         document.getElementById('activeBizName').textContent = currentBusiness.nombre;
         document.getElementById('activeBizCategory').textContent = currentBusiness.categoria;
         document.getElementById('activeBizDesc').textContent = currentBusiness.descripcion || '';
         document.getElementById('activeBizPhone').textContent = currentBusiness.telefono ? 'Tel: ' + currentBusiness.telefono : '';
         document.getElementById('activeBizSchedule').textContent = currentBusiness.horario || '';
 
-        // Actualizar Cabecera de Simulador
-        const mono = MONOGRAMS[id] || currentBusiness.nombre.substring(0, 2).toUpperCase();
-        document.getElementById('chatAvatar').textContent = mono;
+        const headerBox = document.getElementById('activeBizHeaderBox');
+        headerBox.className = `p-5 border-b border-slate-200 transition-colors ${theme.headerBoxBg}`;
+
+        // Actualizar Cabecera de Simulador de Chat con Degradado Vibrante
+        const chatHeader = document.getElementById('chatHeaderBar');
+        chatHeader.style.background = theme.gradient;
+        document.getElementById('chatAvatar').textContent = theme.mono;
         document.getElementById('chatTitle').textContent = currentBusiness.nombre;
-        document.getElementById('simBrowserUrl').textContent = `https://chat.asistente.cloud/v2/${currentBusiness.id}`;
 
         // Renderizar Catálogo, FAQs y Políticas
         renderCatalog(currentBusiness.catalogo || []);
         renderFaqs(currentBusiness.faqs || []);
         renderRules(currentBusiness.informacion || []);
 
-        // Actualizar Código Embebible
+        // Actualizar Código de Integración
         updateCodeSnippet();
 
         // Reiniciar conversación
@@ -547,14 +609,14 @@
       container.innerHTML = items.map(item => {
         const price = item.precio === 0 ? 'GRATIS' : `${item.moneda || 'S/'} ${Number(item.precio).toLocaleString()}`;
         return `
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition flex flex-col gap-1.5 shadow-2xs">
+          <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/90 hover:border-slate-300 transition flex flex-col gap-2 shadow-2xs">
             <div class="flex items-start justify-between gap-2">
-              <h5 class="text-xs font-bold text-slate-900 leading-tight">${item.nombre}</h5>
-              <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-md border border-emerald-200 whitespace-nowrap">${price}</span>
+              <h5 class="text-xs font-extrabold text-slate-900 leading-tight">${item.nombre}</h5>
+              <span class="text-xs font-extrabold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200 whitespace-nowrap">${price}</span>
             </div>
-            <p class="text-[11px] text-slate-600 leading-normal">${item.descripcion || ''} ${item.detalles ? '· ' + item.detalles : ''}</p>
+            <p class="text-[11px] text-slate-600 leading-relaxed">${item.descripcion || ''} ${item.detalles ? '· ' + item.detalles : ''}</p>
             <div class="flex justify-end pt-1">
-              <button onclick="sendQuery('¿Cuál es el precio y detalles de ${item.nombre}?')" class="text-[11px] font-bold text-indigo-700 hover:text-indigo-800 px-2.5 py-1 rounded-md bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 transition">
+              <button onclick="sendQuery('¿Cuál es el precio y detalles de ${item.nombre}?')" class="text-[11px] font-bold text-indigo-700 hover:text-indigo-900 px-3 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 transition">
                 Consultar en Chat ↵
               </button>
             </div>
@@ -571,15 +633,15 @@
       }
 
       container.innerHTML = faqs.map((f, i) => `
-        <div class="rounded-xl bg-slate-50 border border-slate-200 overflow-hidden">
-          <button onclick="toggleFaq(${i})" class="w-full text-left p-3 text-xs font-bold text-slate-900 flex justify-between items-center gap-2 hover:bg-slate-100/60">
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(${i})" class="w-full text-left p-3.5 text-xs font-bold text-slate-900 flex justify-between items-center gap-2 hover:bg-slate-100/60">
             <span>${f.pregunta}</span>
             <span class="text-slate-400 text-xs">▼</span>
           </button>
-          <div id="faq-ans-${i}" class="hidden p-3 pt-0 text-[11px] text-slate-600 border-t border-slate-200 leading-relaxed bg-white">
-            <p class="py-1.5">${f.respuesta}</p>
-            <button onclick="sendQuery('${f.pregunta}')" class="mt-1 text-[11px] text-indigo-600 hover:text-indigo-700 font-bold">
-              Probar en el chat →
+          <div id="faq-ans-${i}" class="hidden p-3.5 pt-0 text-[11px] text-slate-600 border-t border-slate-200 leading-relaxed bg-white">
+            <p class="py-2">${f.respuesta}</p>
+            <button onclick="sendQuery('${f.pregunta}')" class="text-[11px] text-indigo-600 hover:text-indigo-800 font-bold">
+              Preguntar esto en el chat →
             </button>
           </div>
         </div>
@@ -594,18 +656,18 @@
     function renderRules(rules) {
       const container = document.getElementById('rulesList');
       if (!rules || !rules.length) {
-        container.innerHTML = '<li>Sin políticas registradas.</li>';
+        container.innerHTML = '<li class="text-xs text-slate-500">Sin políticas registradas.</li>';
         return;
       }
       container.innerHTML = rules.map(r => `
-        <li class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 leading-relaxed text-slate-700">${r}</li>
+        <li class="p-3 rounded-xl bg-slate-50 border border-slate-200 leading-relaxed text-xs text-slate-700 font-medium">${r}</li>
       `).join('');
     }
 
     function switchTab(tab) {
-      document.getElementById('tabBtnCatalog').className = tab === 'catalog' ? 'px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
-      document.getElementById('tabBtnFaqs').className = tab === 'faqs' ? 'px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
-      document.getElementById('tabBtnRules').className = tab === 'rules' ? 'px-3.5 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3.5 py-2 font-medium text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
+      document.getElementById('tabBtnCatalog').className = tab === 'catalog' ? 'px-3 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3 py-2 font-semibold text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
+      document.getElementById('tabBtnFaqs').className = tab === 'faqs' ? 'px-3 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3 py-2 font-semibold text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
+      document.getElementById('tabBtnRules').className = tab === 'rules' ? 'px-3 py-2 font-bold text-indigo-600 border-b-2 border-indigo-600 transition' : 'px-3 py-2 font-semibold text-slate-500 hover:text-slate-800 border-b-2 border-transparent transition';
 
       document.getElementById('tabCatalog').classList.toggle('hidden', tab !== 'catalog');
       document.getElementById('tabFaqs').classList.toggle('hidden', tab !== 'faqs');
@@ -627,16 +689,16 @@
     function addBotMessage(text, suggestions = [], showLeadForm = false) {
       const box = document.getElementById('chatMessages');
       const msgDiv = document.createElement('div');
-      msgDiv.className = 'flex flex-col items-start gap-1 max-w-[85%]';
+      msgDiv.className = 'flex flex-col items-start gap-1 max-w-[88%]';
 
       const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
 
       let suggestionsHtml = '';
       if (suggestions && suggestions.length > 0) {
         suggestionsHtml = `
-          <div class="flex flex-wrap gap-1.5 mt-2.5">
+          <div class="flex flex-wrap gap-1.5 mt-3">
             ${suggestions.map(s => `
-              <button onclick="sendQuery('${s.replace(/'/g, "\\'")}')" class="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold border border-indigo-200 px-3 py-1 rounded-full transition shadow-2xs">
+              <button onclick="sendQuery('${s.replace(/'/g, "\\'")}')" class="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold border border-indigo-200 px-3 py-1.5 rounded-full transition shadow-2xs">
                 ${s}
               </button>
             `).join('')}
@@ -647,23 +709,23 @@
       let leadHtml = '';
       if (showLeadForm) {
         leadHtml = `
-          <div class="mt-3 p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 w-full flex flex-col gap-2 shadow-sm">
-            <h5 class="text-xs font-bold text-emerald-800">¿Deseas que un asesor se comunique contigo?</h5>
-            <p class="text-[11px] text-slate-600">Deja tu nombre y contacto para darte seguimiento prioritario:</p>
+          <div class="mt-3.5 p-4 rounded-2xl bg-emerald-50 border border-emerald-300 w-full flex flex-col gap-2.5 shadow-sm">
+            <h5 class="text-xs font-black text-emerald-900">¿Deseas que un asesor te contacte por WhatsApp?</h5>
+            <p class="text-[11px] text-slate-600">Completa tus datos para brindarte atención inmediata y personalizada:</p>
             <div class="flex flex-col sm:flex-row gap-2 mt-1">
-              <input type="text" id="quickLeadName" placeholder="Tu nombre completo..." class="flex-1 bg-white border border-slate-300 text-xs px-3 py-2 rounded-lg text-slate-800 focus:outline-none focus:border-emerald-500">
-              <input type="text" id="quickLeadPhone" placeholder="Teléfono o WhatsApp..." class="flex-1 bg-white border border-slate-300 text-xs px-3 py-2 rounded-lg text-slate-800 focus:outline-none focus:border-emerald-500">
+              <input type="text" id="quickLeadName" placeholder="Tu nombre..." class="flex-1 bg-white border border-slate-300 text-xs px-3 py-2 rounded-xl text-slate-800 focus:outline-none focus:border-emerald-500">
+              <input type="text" id="quickLeadPhone" placeholder="Teléfono / WhatsApp..." class="flex-1 bg-white border border-slate-300 text-xs px-3 py-2 rounded-xl text-slate-800 focus:outline-none focus:border-emerald-500">
             </div>
-            <button onclick="submitLead()" class="mt-1 w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition shadow-md shadow-emerald-600/20">
-              Enviar Datos de Contacto
+            <button onclick="submitLead()" class="mt-1 w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs rounded-xl transition shadow-md shadow-emerald-600/20">
+              Enviar a Asesor por WhatsApp
             </button>
           </div>
         `;
       }
 
       msgDiv.innerHTML = `
-        <span class="text-[10px] text-slate-500 font-bold">${currentBusiness ? currentBusiness.nombre : 'Asistente'}</span>
-        <div class="bg-white border border-slate-200 text-slate-800 rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed shadow-sm">
+        <span class="text-[10px] text-slate-500 font-bold px-1">${currentBusiness ? currentBusiness.nombre : 'Asistente'}</span>
+        <div class="bg-white border border-slate-200 text-slate-800 rounded-3xl rounded-tl-sm px-4.5 py-3.5 text-sm leading-relaxed shadow-sm">
           ${formatted}
           ${suggestionsHtml}
           ${leadHtml}
@@ -678,11 +740,11 @@
     function addUserMessage(text) {
       const box = document.getElementById('chatMessages');
       const msgDiv = document.createElement('div');
-      msgDiv.className = 'flex flex-col items-end gap-1 max-w-[85%] self-end ml-auto';
+      msgDiv.className = 'flex flex-col items-end gap-1 max-w-[88%] self-end ml-auto';
 
       msgDiv.innerHTML = `
-        <span class="text-[10px] text-slate-500 font-bold">Tú</span>
-        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm leading-relaxed shadow-md shadow-indigo-600/20 font-medium">
+        <span class="text-[10px] text-slate-500 font-bold px-1">Tú</span>
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-3xl rounded-tr-sm px-4.5 py-3 text-sm leading-relaxed shadow-md shadow-indigo-600/20 font-medium">
           ${text}
         </div>
       `;
@@ -706,8 +768,6 @@
       typing.classList.remove('hidden');
       typing.classList.add('flex');
 
-      const start = performance.now();
-
       try {
         const res = await fetch('/api/chat', {
           method: 'POST',
@@ -720,27 +780,23 @@
         });
 
         const data = await res.json();
-        const duration = Math.round(performance.now() - start);
 
         typing.classList.add('hidden');
         typing.classList.remove('flex');
-
-        document.getElementById('latencyIndicator').textContent = `${duration}ms latencia`;
-        document.getElementById('telemetryBox').textContent = JSON.stringify(data, null, 2);
 
         addBotMessage(data.respuesta, data.sugerencias, Boolean(data.esLeadPotencial));
 
       } catch (err) {
         typing.classList.add('hidden');
         typing.classList.remove('flex');
-        addBotMessage('Error conectando con el servidor de chat.');
+        addBotMessage('Disculpa, ocurrió un inconveniente temporal. Intenta nuevamente.');
       }
     }
 
     async function submitLead() {
       const name = document.getElementById('quickLeadName')?.value.trim();
       const phone = document.getElementById('quickLeadPhone')?.value.trim();
-      if (!name || !phone) return showToast('Por favor completa nombre y teléfono.');
+      if (!name || !phone) return showToast('Por favor completa tu nombre y teléfono.');
 
       try {
         const res = await fetch('/api/leads', {
@@ -754,10 +810,10 @@
           })
         });
         const data = await res.json();
-        showToast('¡Lead registrado con éxito en el CRM!');
+        showToast('¡Datos guardados con éxito en la bandeja CRM!');
         await loadLeads();
       } catch {
-        showToast('Error registrando lead.');
+        showToast('Error registrando los datos.');
       }
     }
 
@@ -772,27 +828,27 @@
 
         const box = document.getElementById('leadsListContainer');
         if (!leadsCache.length) {
-          box.innerHTML = '<span class="text-xs text-slate-500 py-3">Aún no hay prospectos capturados.</span>';
+          box.innerHTML = '<span class="text-xs text-slate-500 py-4 text-center block">Aún no hay prospectos capturados.</span>';
           return;
         }
 
         box.innerHTML = leadsCache.map(lead => {
           const cleanPhone = (lead.contacto || '').replace(/[^0-9]/g, '');
-          const waLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${lead.nombre}, te contactamos desde ${lead.projectId} por tu consulta reciente.`)}`;
+          const waLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${lead.nombre}, nos comunicamos desde ${lead.projectId} respecto a tu consulta.`)}`;
 
           return `
-            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2.5 hover:border-slate-300 transition shadow-2xs">
-              <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-2xs">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
                   ${lead.nombre.substring(0, 1).toUpperCase()}
                 </div>
                 <div>
-                  <h5 class="text-xs font-bold text-slate-900 leading-snug">${lead.nombre}</h5>
-                  <span class="text-[11px] text-slate-500 font-mono">${lead.contacto}</span>
+                  <h5 class="text-xs font-extrabold text-slate-900 leading-snug">${lead.nombre}</h5>
+                  <span class="text-[11px] text-slate-500 font-semibold block">${lead.contacto}</span>
                 </div>
               </div>
 
-              <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold shadow-md shadow-emerald-600/20 transition flex items-center gap-1 shrink-0">
+              <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-extrabold shadow-md shadow-emerald-600/20 transition flex items-center gap-1 shrink-0">
                 <span>WhatsApp ↗</span>
               </a>
             </div>
@@ -813,7 +869,7 @@
     function setWidgetColor(color) {
       widgetSelectedColor = color;
       updateCodeSnippet();
-      showToast(`Color personalizado a ${color}`);
+      showToast(`Color personalizado configurado`);
     }
 
     function copySnippet() {
@@ -833,7 +889,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `leads-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.download = `prospectos-nexuschat-${new Date().toISOString().slice(0, 10)}.csv`;
       a.click();
       showToast('Descarga CSV iniciada');
     }

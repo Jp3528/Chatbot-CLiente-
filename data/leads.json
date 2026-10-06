@@ -8,5 +8,25 @@
     "email": "alejandro.morales@gmail.com",
     "interes": "Interesado en Villa Moderna con piscina (US$ 50,000)",
     "origen": "chatbot-web"
+  },
+  {
+    "id": "LEAD-002",
+    "fecha": "2026-10-05T16:15:00.000Z",
+    "projectId": "la-esquina",
+    "nombre": "Camila Rossi",
+    "contacto": "+51 987 123 456",
+    "email": "camila.rossi@outlook.com",
+    "interes": "Consulta por delivery y combos familiares",
+    "origen": "chatbot-web"
+  },
+  {
+    "id": "LEAD-003",
+    "fecha": "2026-10-05T18:40:00.000Z",
+    "projectId": "sonrisa-dental",
+    "nombre": "Mateo Delgado",
+    "contacto": "+51 976 543 210",
+    "email": "mateo.delgado@yahoo.com",
+    "interes": "Agendamiento para evaluación de diseño de sonrisa",
+    "origen": "chatbot-web"
   }
 ]
