@@ -1,185 +1,133 @@
-# Chatbot Clientes API — Multi-Business AI & Customer Support Engine
+# Chatbot Clientes | Customer Support API & Widget
 
-![Node.js](https://img.shields.io/badge/Node.js-22+-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-5.x-000000?style=for-the-badge&logo=express&logoColor=white)
-![Vercel Ready](https://img.shields.io/badge/Vercel-Serverless_Ready-000000?style=for-the-badge&logo=vercel&logoColor=white)
-![AI Hybrid](https://img.shields.io/badge/AI_Engine-Local_NLP_%2B_LLM-0d9488?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+[Español](#espanol) · [English](#english)
 
-Plataforma full-stack de **asistentes virtuales de atención al cliente multi-negocio**. Permite que cualquier empresa (inmobiliaria, restaurante, clínica dental, tienda de tecnología o e-commerce) configure su base de conocimiento, responda preguntas de catálogo de forma instantánea, capture prospectos calificados (*leads*) y despliegue un **widget flotante embebible** en cualquier sitio web con solo una línea de código.
+[Demo](https://chatbotcliente.vercel.app) · [GitHub](https://github.com/Jp3528/Chatbot-CLiente-)
 
----
+<a id="espanol"></a>
 
-## Características Principales
+## Español
 
-### 1. Motor Híbrido de Inteligencia Artificial & NLP
-* **Modo Autónomo Local (Zero-Cost / Offline):** Búsqueda semántica, similitud Jaccard/TF-IDF y coincidencia de intención por N-gramas que opera **100% gratis**, sin depender de saldo en APIs externas y con respuesta instantánea (< 5ms).
-* **Modo LLM Generativo (OpenAI / Gemini):** Si se configura una API Key (`OPENAI_API_KEY` o `GEMINI_API_KEY`), el motor genera respuestas empáticas, humanas y conversacionales mediante *Prompt Grounding* estricto para evitar alucinaciones.
-* **Fallback Automático Resiliente:** Si el servicio de IA externa se queda sin saldo o pierde conexión, el sistema conmuta de forma transparente al motor semántico local sin interrumpir el servicio al cliente.
+### Descripción
 
-### 2. Arquitectura Multi-Tenant (Multi-Negocio)
-Un solo servidor puede gestionar la atención de cientos de negocios independientes. Incluye 4 perfiles preconfigurados listos para producción:
-1. **`premium-home`:** Inmobiliaria residencial de lujo (casas, villas, mansiones, agendamiento de visitas guiadas).
-2. **`la-esquina`:** Restaurante y pollo crujiente (combos, precios, delivery express, medios de pago contraentrega).
-3. **`sonrisa-dental`:** Clínica odontológica (diseño de sonrisa, ortodoncia, citas de diagnóstico gratuito).
-4. **`nexus-tech`:** Tienda de computación y gaming (laptops gamer, periféricos, garantías y envíos a provincia).
+Prototipo de atención al cliente para varios negocios con API REST, playground y widget embebible. Responde mediante reglas y coincidencia de texto locales, con adaptadores opcionales para proveedores de modelos de lenguaje.
 
-### 3. Captura Inteligente de Prospectos (Lead Generation)
-* Detección automática de intenciones comerciales (solicitud de visitas, cotizaciones, llamadas de asesor o compra).
-* Despliegue de banner para captura de **Nombre**, **WhatsApp/Teléfono** y **Correo**.
-* Almacenamiento seguro en base de datos (`data/leads.json`) y consulta protegida vía API REST.
+### Funcionalidades
 
-### 4. Widget Web Embebible (`widget.js`)
-* Script vanilla JS ultra liviano (< 6KB, zero dependencies).
-* Se integra en cualquier web moderna (WordPress, Shopify, Webflow o HTML puro) con solo agregar:
-  ```html
-  <script src="https://tu-dominio.com/widget.js" data-project="premium-home"></script>
-  ```
-* Incluye botón flotante con animaciones, ventana de chat estilizada, chips de preguntas frecuentes sugeridas y formulario de contacto integrado.
+- Perfiles de negocio con catálogo, información y preguntas frecuentes.
+- Respuestas locales sin necesidad de una clave de IA.
+- Adaptadores para OpenAI y Gemini con fallback al motor local ante fallos.
+- Captura de prospectos y widget JavaScript para integrar el chat en otras páginas.
 
-### 5. Dashboard & Playground Interactivo (`/`)
-* Panel web visual para probar las respuestas de cada negocio en tiempo real.
-* Selector instantáneo de negocio para verificar catálogos y bases de conocimiento.
-* Inspección técnica de la carga útil JSON devuelta por la API (`intencion`, `esLeadPotencial`, `tiempoMs`, `motor`).
-* Visualizador en vivo de prospectos capturados.
+### Tecnologías
 
----
+Node.js · Express 5 · JavaScript ES Modules · Node Test Runner
 
-## Estructura del Proyecto
+### Ejecutar localmente
 
-```text
-chatbot-clientes-api/
-├── api/
-│   └── index.mjs           # Entry point serverless para Vercel
-├── data/
-│   ├── negocios.json       # Bases de conocimiento, FAQs y catálogos multi-negocio
-│   └── leads.json          # Registro estructurado de prospectos capturados
-├── public/
-│   ├── index.html          # Playground y Dashboard interactivo de pruebas
-│   └── widget.js           # SDK y script embebible para sitios web externos
-├── src/
-│   ├── aiEngine.mjs        # Orquestador híbrido (OpenAI GPT-4o-mini + Gemini)
-│   ├── nlpEngine.mjs       # Motor local de búsqueda semántica y detección de intenciones
-│   └── storage.mjs         # Capa de persistencia con soporte para entornos /tmp serverless
-├── test/
-│   └── api.test.mjs        # Suite de pruebas unitarias automatizadas (Node Test Runner)
-├── .env.example            # Plantilla de variables de entorno
-├── .gitignore              # Archivos excluidos de control de versiones
-├── package.json            # Metadatos, scripts y dependencias
-├── vercel.json             # Enrutamiento y configuración de despliegue en Vercel
-├── server.mjs              # Servidor HTTP Express y API REST
-└── README.md               # Documentación técnica completa
-```
+**Requisitos:** Node.js 22 y npm. Las claves de proveedores externos son opcionales.
 
----
-
-## Inicio Rápido (Local)
-
-### 1. Clonar el proyecto
 ```bash
 git clone https://github.com/Jp3528/Chatbot-CLiente-.git
 cd Chatbot-CLiente-
 ```
 
-### 2. Instalar dependencias
 ```bash
-npm install
+npm ci
 ```
 
-### 3. Configurar variables de entorno (Opcional)
-```bash
-cp .env.example .env
-```
-> **Nota:** Si dejas `.env` vacío, el chatbot funcionará al 100% de sus capacidades utilizando el motor semántico local gratuito.
+**Configuración.** Copia [`.env.example`](.env.example) a `.env` si necesitas cambiar `PORT` o configurar un proveedor. Sin claves se utiliza el motor local. Los adaptadores externos dependen de la disponibilidad del modelo y de la cuenta configurada; su presencia no implica una integración validada actualmente.
 
-### 4. Iniciar el servidor
 ```bash
 npm start
 ```
 
-Abre tu navegador en: **`http://localhost:3000`** para ingresar al playground interactivo.
+Playground: `http://localhost:3000`. Salud: `/api/health`. Negocios: `/api/negocios`. Conversación: `POST /api/chat`. Prospectos: `/api/leads`.
 
-### 5. Ejecutar pruebas unitarias
+### Comprobaciones
+
 ```bash
 npm test
 ```
 
+Comandos disponibles para comprobar el proyecto en un entorno con sus dependencias instaladas.
+
+### Estructura
+
+| Ruta                                     | Contenido                                         |
+| ---------------------------------------- | ------------------------------------------------- |
+| [`server.mjs`](server.mjs)               | Servidor Express y rutas HTTP.                    |
+| [`src/aiEngine.mjs`](src/aiEngine.mjs)   | Selección de motor y adaptadores de proveedores.  |
+| [`src/nlpEngine.mjs`](src/nlpEngine.mjs) | Reglas y recuperación local por texto.            |
+| [`src/storage.mjs`](src/storage.mjs)     | Persistencia JSON local y temporal en serverless. |
+| [`public/`](public/)                     | Playground y widget embebible.                    |
+| [`test/`](test/)                         | Pruebas de API.                                   |
+
+### Alcance
+
+Prototipo para datos de prueba. Las rutas de registro de negocios y consulta de prospectos no implementan autenticación administrativa en el código actual. El almacenamiento JSON en `/tmp` de un despliegue serverless es temporal. Una versión con datos reales requiere autorización por negocio, controles de acceso y una base persistente.
+
 ---
 
-## Especificación de la API REST
+<a id="english"></a>
 
-| Método | Endpoint | Descripción | Acceso |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/health` | Estado del servidor y motor de IA activo | Público |
-| `GET` | `/api/negocios` | Lista todos los negocios registrados | Público |
-| `GET` | `/api/negocios/:id` | Obtiene el perfil, catálogo y FAQs de un negocio | Público |
-| `POST` | `/api/negocios` | Registra dinámicamente un nuevo negocio | Admin / API |
-| `POST` | `/api/chat` | Envía mensaje al chatbot y recibe respuesta inteligente | Público |
-| `POST` | `/api/leads` | Registra los datos de un prospecto interesado | Público |
-| `GET` | `/api/leads` | Consulta la lista de leads capturados | Privado |
+## English
 
-### Ejemplo: Conversación con el Chatbot (`POST /api/chat`)
+### Overview
 
-**Petición:**
+A multi-business customer support prototype with a REST API, playground and embeddable widget. It responds through local rules and text matching, with optional language model provider adapters.
+
+### Features
+
+- Business profiles with catalogs, information and FAQs.
+- Local responses without an AI API key.
+- OpenAI and Gemini adapters with fallback to the local engine on failure.
+- Lead capture and a JavaScript widget for embedding chat on other pages.
+
+### Technology
+
+Node.js · Express 5 · JavaScript ES Modules · Node Test Runner
+
+### Run locally
+
+**Requirements:** Node.js 22 and npm. External provider keys are optional.
+
 ```bash
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{
-    "projectId": "premium-home",
-    "pregunta": "¿Tienen propiedades con piscina y cuál es su precio?"
-  }'
+git clone https://github.com/Jp3528/Chatbot-CLiente-.git
+cd Chatbot-CLiente-
 ```
 
-**Respuesta JSON:**
-```json
-{
-  "projectId": "premium-home",
-  "negocio": "Premium Home Inmobiliaria",
-  "respuesta": "Sí, disponemos de 'Villa Moderna' (US$ 50,000) y 'Mansión Lujosa' (US$ 700,000), ambas con amplias piscinas y jardines privados.",
-  "intencion": "faq",
-  "esLeadPotencial": false,
-  "sugerencias": [
-    "¿Cómo puedo agendar una visita guiada?",
-    "¿Cuál es la propiedad más económica?"
-  ],
-  "motor": "local_nlp",
-  "tiempoMs": 1
-}
+```bash
+npm ci
 ```
 
----
+**Configuration.** Copy [`.env.example`](.env.example) to `.env` to change `PORT` or configure a provider. Without keys, the local engine is used. External adapters depend on model availability and the configured account; their presence does not imply a currently validated integration.
 
-## Cómo Embeber el Widget en Cualquier Sitio Web
-
-Para integrar el chatbot en cualquier página web (WordPress, Shopify, Landing Page HTML, etc.), añade el siguiente fragmento antes de la etiqueta de cierre `</body>`:
-
-```html
-<!-- Widget de Chatbot de Atención al Cliente -->
-<script 
-  src="https://tu-dominio.vercel.app/widget.js" 
-  data-project="premium-home" 
-  data-color="#0f766e">
-</script>
+```bash
+npm start
 ```
 
-### Parámetros Configurables:
-* `data-project`: Identificador del negocio (`premium-home`, `la-esquina`, `sonrisa-dental`, `nexus-tech` o uno personalizado).
-* `data-color`: Color hexadecimal del tema para que combine con la identidad visual de la marca (ej. `#0f766e`, `#ea580c`, `#2563eb`).
-* `data-api`: (Opcional) URL base del backend si el widget se aloja en un dominio independiente.
+Playground: `http://localhost:3000`. Health: `/api/health`. Businesses: `/api/negocios`. Chat: `POST /api/chat`. Leads: `/api/leads`.
 
----
+### Checks
 
-## Despliegue en la Nube (Vercel)
+```bash
+npm test
+```
 
-El proyecto incluye `vercel.json` y la función serverless `api/index.mjs` preconfigurada:
+Available commands for checking the project in an environment with its dependencies installed.
 
-1. Sube tu código a un repositorio en tu cuenta de GitHub (`Jp3528/Chatbot-CLiente-`).
-2. Entra a [vercel.com](https://vercel.com/) y pulsa **Add New... > Project**.
-3. Selecciona tu repositorio y pulsa **Deploy**.
-4. (Opcional) En *Settings > Environment Variables*, añade `OPENAI_API_KEY` o `GEMINI_API_KEY` si deseas utilizar modelos de lenguaje generativos en la nube.
+### Structure
 
----
+| Path                                     | Contents                                     |
+| ---------------------------------------- | -------------------------------------------- |
+| [`server.mjs`](server.mjs)               | Express server and HTTP routes.              |
+| [`src/aiEngine.mjs`](src/aiEngine.mjs)   | Engine selection and provider adapters.      |
+| [`src/nlpEngine.mjs`](src/nlpEngine.mjs) | Local rules and text retrieval.              |
+| [`src/storage.mjs`](src/storage.mjs)     | Local and temporary serverless JSON storage. |
+| [`public/`](public/)                     | Playground and embeddable widget.            |
+| [`test/`](test/)                         | API tests.                                   |
 
-## Licencia
+### Scope
 
-Este proyecto está liberado bajo la Licencia **MIT**. Puedes utilizarlo y modificarlo libremente para proyectos comerciales o personales.
+A prototype for test data. Business registration and lead listing routes do not implement administrative authentication in the current code. JSON stored in a serverless deployment's `/tmp` directory is temporary. A version handling real data requires business-level authorization, access controls and persistent storage.
